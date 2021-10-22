@@ -1,0 +1,44 @@
+\documentclass[a4paper]{article}
+
+\input{../templates/imports.tex}
+\input{../templates/styles/gfsartemisia.tex}
+
+\author{BENICHOU Nathan}
+\title{Exercice 5 du troisième TD d'intégration}
+
+\input{../templates/numbers.tex}
+\input{../templates/fancy.tex}
+\input{../templates/colors.tex}
+\input{../templates/math.tex}
+
+\begin{document} %------------------------------------------------------------------------------------------------------------------------------------------------- DOC
+\section{Questions}
+\noindent Pour $n\geqslant 1$, on définit :
+$$f_n:\begin{aligned}
+    \R_+ \longrightarrow & \ \R_+^* \\
+    x    \longmapsto     & \ \dfrac{n^x}{\displaystyle\prod_{1\leqslant k\leqslant n}\left(1+\dfrac{x}{k}\right)} = \dfrac{n^xn!}{\displaystyle\prod_{1\leqslant k\leqslant n}\left(x+k\right)}
+\end{aligned}$$
+\begin{enumerate}
+    \item Pour $n\geqslant 1$, on a : $f_n > 0$ donc on peut calculer son logarithme : pour $x\geqslant 0$,
+    \begin{align*}
+        \ln f_n(x)&\alignsymbols{=} x\ln n - \displaystyle\sum_{1\leqslant k\leqslant n}\ln\left(1+\dfrac{x}{k}\right) \\
+        &\alignsymbols{=} x\displaystyle\sum_{1\leqslant k < n}\left(\ln\left(k+1\right)-\ln k\right) - \displaystyle\sum_{1\leqslant k<n}\ln\left(1+\dfrac{x}{k}\right) - \ln\left(1+\dfrac{x}{n}\right) \\
+        &\alignsymbols{=} \displaystyle\sum_{1\leqslant k<n}\left(x\ln\left(1+\dfrac{1}{k}\right)-\ln\left(1+\dfrac{x}{k}\right)\right)-\ln\left(1+\dfrac{x}{n}\right)\\
+        &\alignsymbols{\underset{n\rightarrow +\infty}{=}} \displaystyle\sum_{1\leqslant k<n}\left(x\dfrac{1}{k}-\dfrac{x}{k}+O\left(\dfrac{1}{n^2}\right)\right)+o(1)
+        \alignsymbols{\underset{n\rightarrow +\infty}{=}} \displaystyle\sum_{1\leqslant k<n}O\left(\dfrac{1}{n^2}\right)+o(1)
+    \end{align*}
+    On constate que $\ln f_n$ converge simplement, donc $f_n$ converge simplement vers une fonction positive $f:\R_+\longmapsto\R_+$
+    \item Soient $n\geqslant 1$ et $x\geqslant 0$,
+    \begin{align*}
+        f_n(x+1)&=\dfrac{n^{x+1}n!}{\displaystyle\prod_{1\leqslant k\leqslant n}\left(x+1+k\right)}\\
+        &=n\dfrac{n^xn!}{\displaystyle\prod_{2\leqslant k\leqslant n+1}\left(x+k\right)}\\
+        &=n\dfrac{n^xn!}{\dfrac{1}{x+1}(x+n+1)\displaystyle\prod_{1\leqslant k\leqslant n}\left(x+k\right)}\\
+        &=\dfrac{n}{n+x+1}(x+1)\dfrac{n^xn!}{\displaystyle\prod_{1\leqslant k\leqslant n}\left(x+k\right)}\underset{n\rightarrow+\infty}{\sim}(x+1)f_n(x)\\
+    \end{align*}
+    D'où : $f(x+1)=(x+1)f(x)$
+    \item Pour $n\geqslant 1$, $f_n\in\mathcal{C}^\infty(\R_+)$ et $f_n>0$, alors on note : $$g_n=\dfrac{f_n'}{f_n}=(\ln f_n)'$$
+    Grâce à l'expression de $\ln f_n$ trouvée en (1.), on a directement, pour $x\geqslant 0$ :
+    $$g_n(x)=\ln n - \displaystyle\sum_{1\leqslant k\leqslant n}\dfrac{1}{x+k}\text{\ \ \ \ \ \ \ \ \ et donc :\ \ \ \ \ \ \ \ \ }g_n'(x)=\sum_{1\leqslant k\leqslant n}\dfrac{1}{(x+k)^2}$$
+\end{enumerate}
+\section{Lemmes}
+\end{document}

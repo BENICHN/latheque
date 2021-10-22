@@ -32,5 +32,8 @@
 \usepackage{fancyhdr}
 \usepackage{titling}
 \usepackage{dashbox}
+\usepackage{eqparbox}
 \usetikzlibrary{arrows, arrows.meta, bending, calc, backgrounds, patterns}
 \usetikzlibrary{decorations.markings}
+
+\newcommand\alignsymbols[2][c]{\mathrel{\eqmakebox[S][#1]{$#2$}}{}}
