@@ -58,11 +58,11 @@ $$f_n:\begin{aligned}
 \end{lem}
 \begin{proof}
     Supposons que, pour $n\geqslant 0$, $f_{n+1}-f_n$ est croissante. Alors, pour $p\geqslant 0$,
-    $$\left|f_{n+p}-f_n\right|=\left|\displaystyle\sum_{n\leqslant k < n+p}(f_{k+1}-f_k)\right|=\displaystyle\sum_{n\leqslant k < n+p}(f_{k+1}-f_k)$$
-    Donc $\left|f_{n+p}-f_n\right|$ est croissante. Soit $A$ une partie majorée de $D$, notons $a=\sup A$. \\
-    Soit $\epsilon>0$. Il existe $N\geqslant 0$ tel que, pour $n\geqslant N$ et $p\geqslant 0$, on a : $\left|f_{n+p}(a)-f_n(a)\right|\leqslant\epsilon$
-    puisque $(f_n(a))$ converge donc vérifie le critère de Cauchy. Or $\left|f_{n+p}-f_n\right|$ est croissante donc $\left|f_{n+p}(a)-f_n(a)\right|\geqslant\underset{x\in A}{\sup}\left|f_{n+p}(x)-f_n(x)\right|$.
-    Donc $\underset{x\in A}{\sup}\left|f_{n+p}(x)-f_n(x)\right|\leqslant\epsilon$. \\
+    $$\abs{f_{n+p}-f_n}=\abs{\displaystyle\sum_{n\leqslant k < n+p}(f_{k+1}-f_k)}=\displaystyle\sum_{n\leqslant k < n+p}(f_{k+1}-f_k)$$
+    Donc $\abs{f_{n+p}-f_n}$ est croissante. Soit $A$ une partie majorée de $D$, notons $a=\sup A$. \\
+    Soit $\epsilon>0$. Il existe $N\geqslant 0$ tel que, pour $n\geqslant N$ et $p\geqslant 0$, on a : $\abs{f_{n+p}(a)-f_n(a)}\leqslant\epsilon$
+    puisque $(f_n(a))$ converge donc vérifie le critère de Cauchy. Or $\abs{f_{n+p}-f_n}$ est croissante donc $\abs{f_{n+p}(a)-f_n(a)}\geqslant\underset{x\in A}{\sup}\abs{f_{n+p}(x)-f_n(x)}$.
+    Donc $\underset{x\in A}{\sup}\abs{f_{n+p}(x)-f_n(x)}\leqslant\epsilon$. \\
     Ainsi $(f_n)$ vérifie le critère de Cauchy donc converge uniformément vers $f$ sur $A$. \\
     Même démonstration pour le cas $f_{n+1}-f_n$ décroissante.
     % Pour le cas $f_{n+1}-f_n$ décroissante, on note $\varphi : x\longmapsto -x$ et $g=f\circ\varphi$, alors $g_{n+1}-g_n$ est croissante positive.
@@ -70,6 +70,11 @@ $$f_n:\begin{aligned}
 \end{proof}
 \begin{lem}
     Soient $(f_n)_{n\geqslant 0}$ une suite de fonctions qui converge uniformément vers une fonction $f:D\longrightarrow\R$ avec $D\subset\R$,
-    et $g:f(D)\longrightarrow\R$ une fonction uniformément continue. Alors $(g\circ f_n)$ converge uniformément vers $g\circ f$
+    et $g:f(D)\longrightarrow\R$ une fonction uniformément continue. Alors $(g\circ f_n)$ converge uniformément vers $g\circ f$.
 \end{lem}
+\begin{proof}
+    Soit $\epsilon>0$. Par continuité uniforme, il existe $\delta>0$ tel que : $$\forall x,y\in f(D), \abs{x-y}\leqslant\delta\Rightarrow\abs{g(x)-g(y)}\leqslant\epsilon$$
+    Par convergence uniforme, il existe un rang $N\geqslant 0$ à partir duquel on a, pour $x\in D$ : $$\abs{f_n(x)-f(x)}\leqslant\delta$$
+    Alors : $$\abs{g\circ f_n(x)-g\circ f(x)}\leqslant\epsilon$$
+\end{proof}
 \end{document}
