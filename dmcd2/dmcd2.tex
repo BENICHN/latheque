@@ -1,0 +1,40 @@
+\documentclass[a4paper]{article}
+
+\input{../templates/imports.tex}
+\input{../templates/styles/gfsartemisia.tex}
+
+\author{BENICHOU Nathan}
+\title{DM2 de calcul différentiel}
+
+\input{../templates/numbers.tex}
+\input{../templates/fancy.tex}
+\input{../templates/colors.tex}
+\input{../templates/math.tex}
+
+\begin{document} %------------------------------------------------------------------------------------------------------------------------------------------------- DOC
+  \begin{enumerate}
+    \item $\Q$ est dense dans $\R$ donc, pour $\epsilon > 0$, il existe $q\in\Q$ tel que $\left|q-\sqrt{2}\right|\leqslant\epsilon$. Ainsi $d(\sqrt{2},\Q)=\underset{q\in\Q}{\inf}\left|q-\sqrt{2}\right|=0$
+    \item Soit $y\in E$, notons $d=d(y,A)$.\\
+    $d=\underset{x\in A}{\inf}\norm{x-y}$ donc il existe une suite $(x_n)\in A^\N$ telle que $\norm{x_n-y}\longrightarrow d$.\\
+    À partir d'un rang $n_0$, on a : $\norm{x_n-y}\leqslant 2d$ donc $x_n \in\overline{\mathcal{B}}(y,2d)\cap \overline{A}$.\\
+    Par compacité, il existe une extraction $\varphi$ telle que
+    $x_{\varphi(n)}\longrightarrow x\in \overline{\mathcal{B}}(y,2d)\cap \overline{A}$.
+    De plus, pour $n\geqslant 0$, on a : $$\norm{y-x_{\varphi(n)}}-\norm{x_{\varphi(n)}-x}\leqslant\norm{x-y}\leqslant\norm{y-x_{\varphi(n)}}+\norm{x_{\varphi(n)}-x}$$
+    Par passage à la limite, puisque $\norm{x_{\varphi(n)}-y}\longrightarrow d$ et $\norm{x_{\varphi(n)}-x}\longrightarrow 0$, on a donc : $\norm{x-y}=d$.
+    \item Soient $x,y\in E$. \begin{enumerate}
+        \item Pour $a\in A$, $d(x,A)\leqslant \norm{x-a} \leqslant \norm{x-y} + \norm{y-a}$
+        \item $d(x,A)-\norm{x-y}$ est un minorant de $\norm{y-a}$ pour $a\in A$, donc est inférieur à $d(y,A)$. D'où : $d(x,A)\leqslant\norm{x-y}+d(y,A)$.
+        \item On a donc, pour $x,y\in E$, $$d(x,A)-d(y,A)\leqslant\norm{x-y}\text{\ \ \ \ \ \ \ et\ \ \ \ \ \ \ }d(y,A)-d(x,A)\leqslant\norm{y-x}=\norm{x-y}$$ soit encore : $$\left|d(x,A)-d(y,A)\right|\leqslant\norm{x-y}$$
+        C'est à dire que $x\longmapsto d(x,A)$ est 1-lipschitzienne.
+    \end{enumerate}
+    \item Soient $A$ un fermé de $E$ et $B$ un compact de $E$ vérifiant $A\cap B=\emptyset$. Notons $\delta=\underset{\substack{a\in A \\ b\in B}}{\inf}\norm{a-b}=\underset{b\in B}{\inf}\,d(b,A)$.\\
+    Il existe une suite $(a_n,b_n)\in (A\times B)^\N$ telle que $\norm{b_n-a_n}\longrightarrow\delta$. Par compacité, il existe une extraction $\varphi$ telle que $b_{\varphi(n)}\longrightarrow b\in B$. \\
+    Comme en (2.), on a, pour $n\geqslant 0$ : $$\norm{b-b_{\varphi(n)}}-\norm{b_{\varphi(n)}-a_{\varphi(n)}}\leqslant\norm{b-a_{\varphi(n)}}\leqslant\norm{b-b_{\varphi(n)}}+\norm{b_{\varphi(n)}-a_{\varphi(n)}}$$
+    et on déduit que : $\norm{b-a_{\varphi(n)}}\longrightarrow\delta$, donc $d(b,A)=\delta$. Or, $A$ est fermé donc il existe $a\in A$ tel que $\norm{b-a}=\delta$. \\
+    Sachant que $A\cap B = \emptyset$, on ne peut pas avoir $\delta=0$ (auquel cas on aurait $a=b\in A\cap B$) donc $\delta>0$.
+    \item Avec : $$A=\left\{\left(x,\dfrac{1}{x^2}\right) \bigg|\, x<0\right\}\text{\ \ \ \ \ \ \ et\ \ \ \ \ \ \ }B=\left\{\left(x,\dfrac{1}{x^2}\right) \bigg|\, x>0\right\}$$
+    $A$ et $B$ sont fermés et disjoints, et on a : $\underset{\substack{a\in A \\ b\in B}}{\inf}\norm{a-b}=0$. En effet, posons : 
+    $$(a_n)=\left(-\dfrac{1}{n},n^2\right)\in A^\N\text{\ \ \ \ \ \ \ et\ \ \ \ \ \ \ }(b_n)=\left(\dfrac{1}{n},n^2\right)\in B^\N$$
+    Alors : $\norm{a_n-b_n}_2=\dfrac{2}{n}\longrightarrow 0$
+  \end{enumerate}
+\end{document}

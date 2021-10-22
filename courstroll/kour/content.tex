@@ -1,0 +1,712 @@
+\chapter{Suprématie plotiste}
+
+\begin{res}
+  L'expérience nous montre que ce chapitre-là est injustement négligé par la plupart des professeurs de France.
+  Pourtant, il reste un domaine des mathématiques au programme. Aujourd'hui, nous n'allons pas nous priver de l'explorer de long en large.
+
+  Dans un premier temps, nous nous chargerons de poser les bases de cette algèbre. Puis nous nous intéresserons à l'utilité-même de ce chapitre :
+  démontrer la suprématie plotiste (ce qui passe par la suprématie relative à chaque filière puis la suprématie générale).
+\end{res}
+
+\minitoc
+
+\begin{att}{Disclaimer}
+  Pour pouvoir lire et comprendre ce cours, il est nécessaire (et suffisant) de poser son cerveau sur sa table.
+\end{att}
+
+\clearpage
+
+\section{Problèmes}
+
+\setcounter{numeroprob}{158}
+
+\begin{probleme}{Mettre au point l'algèbre fermatienne}
+  Comment, au sein de notre magnifique institution des Classes Préparatoires aux Grandes Écoles du Lycée Pierre de Fermat de Toulouse,
+  poser des règles d'interaction des classes les unes avec les autres ?
+  Comment gérer leurs structures d'ensemble et leurs lois de composition internes ? Autrement dit, quelles portes nous ouvre l'algèbre fermatienne ?
+\end{probleme}
+
+\begin{voir}{Suprématie plotiste}
+  \includegraphics[width=\textwidth]{images/podium.png}
+\end{voir}
+
+
+\begin{probleme}{Comment classer les classes les unes par rapport aux autres ?}
+  Quand on prend des exemples particuliers dans le lycée comme les ECS ou les MP2, force est de constater que nous leur sommes supérieurs.
+  Est-il possible d'établir une relation d'ordre (partielle ou totale) entre les différentes classes de Fermat ?
+  Dans ce cas-là, pouvons-nous nous intéresser plus globalement à la position de la classe de MPSI3 par rapport aux autres classes,
+  quelles qu'elles soient, c'est-à-dire toutes les fusions, intersections, multiplications (!) entre différentes classes ?
+\end{probleme}
+
+\section{Généralités}
+
+\newcommand\proj{p}
+\newcommand\Prob{\mathbb{P}}
+\newcommand\Part{\mathcal{P}}
+\newcommand\EF{\mathbb{E}_{\tn{Fer}}}
+\newcommand\PF{\mathbb{P}_{\tn{Fer}}}
+\newcommand\AF{\mathbb{A}_{\tn{Fer}}}
+\newcommand\FF{\mathbb{F}\tn{ermat}}
+\newcommand\Car{\mathbb{C}\tn{ar}}
+\newcommand\Fil{\mathbb{F}\tn{il}}
+\newcommand\tutu{$-\hspace{0.4pt}-$}
+\newcommand\tn[1]{\textnormal{#1}}
+
+\subsection{Espace vectoriel des classes dans Fermat}
+
+\begin{defn}{$\EF$ et $\Car$}
+  On appelle $\EF$ l'ensemble des élèves étudiant à la prépa du lycée Fermat.
+  On notera $\Car$ l'ensemble des caractéristiques que peut avoir un étudiant de $\EF$.
+  Un élément de $\Part(\EF)$ est appelé classe et un élément de $\Car$ est appelé caractère.
+  Par convention, les classes sont écrites en capitales et les caractères en minuscules.
+
+  On peut additionner les éléments de $\Car$ et de $\Part(\EF)$ (respectivement entre eux)
+  selon la loi $\cup$ (d'inverse $\cap$) et multiplier les éléments de $\Car$ par les éléments de $\Part(\EF)$ ou de $\Car$ selon la loi $\times$.
+\end{defn}
+
+\begin{ex}{Pour bien comprendre}
+  Quelques classes et caractéristiques :
+  \begin{itemize}
+    \item La MPSI3 est la classe constituée des élèves de $\EF$ :\\
+          \{AncelinLisa, AvenatSylvain, \dots, WindelsArthur\}
+    \item $\tn{talentueux}\times\tn{MPSI2}= \tn{MPSI3}$
+    \item $\tn{MPSI} = \tn{MPSI1} \uplus \tn{MPSI2} \uplus \tn{MPSI3}$
+    \item $\tn{3hPC}\ \cup\ \tn{2hMaths} = \tn{SiesteMardiaprem}$
+    \item $\tn{samedi} \times \tn{RéfNonGaliléen} = \tn{Décès}$ \\
+  \end{itemize}
+\end{ex}
+
+\begin{rem}{Nomenclature}
+  La plupart des éléments de $\EF$ et des multiplications de caractères par des classes ne correspondent à aucun élément connu.
+  Par exemple, la classe de tous les élèves de $\EF$ dont le nom fait sept lettres ne porte aucun nom. \\
+  De plus, $\tn{sérieux} \times \tn{MPSI3} = \emptyset$
+
+  On s'accordera pour appeler filière les classes portant un nom (comme MPSI3…) et $\Fil$ l'ensemble des filières.
+
+  Les élèves sont considérés indifféremment selon s'ils sont spés ou sups. En effet, s'ils sont spés à Fermat,
+  c'est qu'ils ont déjà travaillé en tant que sup.
+  On choisit donc de les associer à la classe dans laquelle ils étaient lorsqu'ils étaient en sup.
+  Ainsi, $\tn{Élie} \in\tn{MPSI3}$\\
+
+  Cependant $\EF$ est mutable. En effet, lorsque les élèves quittent Fermat, ils sont supprimés de l'ensemble. De même, lorsqu'ils intègrent Fermat, les élèves sont
+  ajoutés à l'ensemble.
+\end{rem}\ \\
+
+\begin{rem}{Bruni}
+  $\tn{MPSI3}\ \cap\ \tn{HK} = \tn{Bruni}$ mais Bruni est un élément négligeable. \\
+  Ainsi $\tn{MPSI3}\ \cap\ \tn{HK} \sim 0$
+\end{rem}
+
+\begin{plusloin}{Ensemble $\FF$}
+  D'autres éléments comme $\PF$ (l'ensemble des professeurs) ou
+  $\AF$ (l'ensemble de l'administration, des agents d'entretien et cuisiniers) existent.
+
+  On a de plus : $\FF = \AF \uplus \EF \uplus \PF$
+\end{plusloin}
+
+\begin{prop}{Structure de $\Part(\EF)$}
+  $(\Part(\EF), \cup, \times)$ est un $\Car$-espace vectoriel.
+\end{prop}
+
+\begin{exercice}
+  Faire la démonstration.
+\end{exercice}
+
+\begin{correction}
+  Trivialissime : il suffit d'utiliser la définition.\\
+  Soient $c1, c2\in \Car$ et $C\subset \EF$ :
+  \begin{align*}
+    c1\times(c2\times C) & =c1\times\{c2\times e | e \in C\}                          \\
+                         & =\{c1\times (c2\times e) | e \in C\}                       \\
+                         & =\{(c1\times c2)\times e | e \in C\}=(c1\times c2)\times C
+  \end{align*}
+  Soient $c1, c2\in \Car$ et $C1, C2\subset \EF$ :
+  \begin{align*}
+      & (c1\cup c2)\times (C1\cup C2)                                                                                        \\
+    = & \{(c1\cup c2)\times e\ |\ e\in C1 \cup C2\}                                                                          \\
+    = & \{c1\times e\ |\ e\in C1\}\cup\{c1\times e\ |\ e\in C2\}\cup\{c2\times e\ |\ e\in C1\}\cup\{c2\times e\ |\ e\in C2\} \\
+    = & c1\times C1\cup c1\times C2\cup c2\times C1\cup c2\times C2
+  \end{align*}
+  Soit $C\subset \EF$ :
+  \begin{align*}
+    \tn{id}\times C = \{id\times e\ |\ e\in C\} = \{e\ |\ e\in C\} = C
+  \end{align*}
+  Ainsi $(\Part(\EF), \cup, \times)$ est un $\Car$-e.v..
+\end{correction}
+
+\begin{defn}{Module et relation ($\equiv$)}
+  Pour une classe donnée $C$, on utilisera la notation $\proj_C : \Part(\EF) \rightarrow \Car$
+  pour désigner le caractère de la composante sur $C$ des éléments de $\Part(\EF)$.
+
+  On notera aussi ($\equiv$) la relation telle que : \\
+  $\forall C1, C2 \in \Part(\EF),\ C1 \equiv C2 \Leftrightarrow \proj_{C1} =  \proj_{C2}$
+\end{defn}
+
+\begin{prop}{Nature de la relation ($\equiv$)}
+  La relation ($\equiv$) est une relation d'équivalence.
+\end{prop}
+
+\begin{dem}
+  Ses classes d'équivalence sont les images réciproques de chaque projection.
+\end{dem}
+
+\begin{rem}{Inclusion}
+  On a toujours la relation d'ordre ($\subset$) entre les classes.
+\end{rem}
+
+\begin{att}{Ordre partiel}
+  La relation d'inclusion n'est pas totale.
+  Prenons Jonathan, Baptiste, Alexis $\in$ Coinche :
+  \{Jonathan, Baptiste\} et \{Baptiste, Alexis\} ne sont pas comparables.
+\end{att}
+
+\begin{defn}{Sous-classe}
+  Une partie d'une classe $C$ est appelée sous-classe de $C$.
+\end{defn}
+
+\begin{prop}{Sous-espace vectoriel}
+  Pour toute classe $C$ dans $\Part(\EF)$, l'ensemble des sous-classes de $C$
+  est un s.e.v. de $\Part(\EF)$.
+\end{prop}
+
+\begin{dem}
+  Il suffit de l'écrire.
+\end{dem}
+
+\begin{prop}{Somme directe}
+  $\EF =  \tn{HK} \uplus \tn{Chartes} \uplus \tn{Bio} \uplus \tn{PCSI} \uplus \tn{MPSI}$
+
+  Ainsi : $\Part(\EF) = \Part\tn{(HK)} \oplus \Part\tn{(Chartes)} \oplus \Part\tn{(Bio)} \oplus \Part\tn{(PCSI)} \oplus \Part\tn{(MPSI)}$ \\
+  où : $\Part\tn{(Bio)} = \Part\tn{(Grenouilles)} \oplus \Part\tn{(Poireaux)}$,\\
+  $\Part\tn{(PCSI)} = \Part\tn{(PCSI1)} \oplus \Part\tn{(PCSI2)}$ et\\
+  $\Part\tn{(MPSI)} = \Part\tn{(MPSI1)} \oplus \Part\tn{(MPSI2)} \oplus \Part\tn{(MPSI3)}$
+\end{prop}
+
+\subsection{Base de l'espace des classes}
+
+\begin{prop}{Dimension finie (Théorème de l'avantage concurrentiel)}
+  Pour toute filière $F$ de $\Fil$, l'espace $\Part(F)$ possède une base canonique, également appelée salle de base.
+\end{prop}
+
+\begin{voir}{Beckbingo}
+  \includegraphics[width=\textwidth]{images/beck.jpeg}
+\end{voir}
+
+\begin{dem}
+  Dans le discours de Beckrich du début de l'année, le proviseur a dit lui-même la phrase suivante :
+  “Nous n'avons pas les moyens d'ouvrir les salles” (cf Beckbingo à gauche) pour faire référence à
+  l'impossibilité financière d'administrer l'entièreté des salles du lycée.
+  Cependant, il se fonde sur un principe de mutuelle confiance entre l'administration et les élèves pour donner
+  un libre accès aux salles après les cours. Ainsi, pour toute la soirée, les classes disposent d'une salle de base.
+  Donc pour toute filière $F$ de $\Fil$, il existe une base $\mathcal{B}$ de $\Part(F)$.
+\end{dem}
+
+\subsection{Palindromes}
+Pour démontrer la supériorité, il va falloir rajouter des outils
+extérieurs. Ici nous allons parler de la fonction pal.
+
+\begin{defn}{Lettre, mot, Mot, pal et palindrome}
+  Soit $n \geqslant 0$. On appelle lettre un élément de l'alphabet ou le caractère vide “\_”,
+  mot un $n$-uplet de lettres et Mots l'ensemble des mots.
+  On introduit la fonction :
+  $$\tn{pal} : \ \begin{aligned}
+      (\tn{Alphabet}\cup\{“\_”\})^n             & \rightarrow(\tn{Alphabet}\cup\{“\_”\})^n             \\
+      (\tn{lettre}_i)_{1\leqslant i\leqslant n} & \mapsto(\tn{lettre}_{n-i})_{1\leqslant i\leqslant n}
+    \end{aligned}$$
+  On appelle palindromes les mots de deux lettres ou plus invariants par pal.
+
+  L'ensemble des palindromes est appelé Palindromes.
+
+  Sur Mots sont définies deux lois internes :
+  \begin{itemize}
+    \item $(++)$ est la concaténation de deux mots.
+    \item $(+)$ est la superposition de deux mots lorsque deux caractères non vides ne se chevauchent pas.
+  \end{itemize}
+\end{defn}
+
+\begin{plusloin}{verlan}
+  Une autre fonction de Leturcq\tutu Daligaux est \textnormal{verlan}.
+  Historiquement parlant, le débat a été long pour déterminer s'il s'agissait d'une symétrie.
+  Finalement, le célèbre mathématicien a apporté l'argument décisif de l'arabe et a ainsi clôt le débat.
+  En effet, le verlan de “Arabe” est “Rebeu” et le verlan de “Rebeu” est “Beur” or “Arabe” $\ne$ “Beur”
+  donc verlan n'est pas une symétrie.
+\end{plusloin}
+
+\begin{ex}{Palindromes}
+  Kayak, Bob, Anna $\in$ Palindromes \\
+  “ma\ \_\ \_\ er” + “\_\ \_\ ng\_\ \_ = “manger”\\
+  “abra” ++ “cadabra” = “abracadabra”
+
+\end{ex}\ \\
+
+\begin{rem}{Lien entre Mots et Alphabet}
+  $\{M \in \tn{Mots}\ |\ \tn{len}(M) = n\} = (\tn{Alphabet}\cup\{“\_”\})^n$
+\end{rem}
+
+\begin{prop}{Symétrie}
+  pal est une symétrie orthogonale pour le produit scalaire usuel.
+\end{prop}
+
+\begin{dem}
+  pal est linéaire pour (+) et $\tn{pal}\circ\tn{pal}=\tn{id}$
+\end{dem}
+
+\begin{prop}{Identité de Benichou-Battistelli}
+  Palindromes est une demi-droite vectorielle de Mots.
+\end{prop}
+
+\begin{voir}{Pliage d'un palindrome}
+  \includegraphics[width=\textwidth]{images/ppal.png}
+  On voit bien comment la droite se transforme en demi-droite.
+\end{voir}
+
+\begin{dem}
+  Soit $m\in\tn{Mots}$, $m$ se décompose dans Alphabet donc s'écrit en coordonnées donc c'est un vecteur.
+  De plus, un mot s'écrit sur une ligne donc il est droit, et par symétrie du palindrome on peut le plier en deux au milieu, formant alors une demi-droite vectorielle.
+\end{dem}
+
+\begin{defn}{Décomposition en palindromes}
+  Tout mot appartenant à Mots se décompose en la concaténation d'un certain nombre de sous-mots.
+  Ces sous-mots peuvent soit appartenir à Palindromes (dans ce cas, c'est un sous-palindrome),
+  soit à Mots\textbackslash Palindromes = Mots$^-$ (dans ce cas-là, c'est un sous\tutu mot).\\
+  On appelle décomposition d'un mot $m$ un n-uplet $(m_i)_{1\leqslant i\leqslant n}$ de sous-mots de $m$
+  vérifiant : $\displaystyle\conc_{1\leqslant i\leqslant n}m_i=m$\\
+  On parle de \textbf{LA} décomposition de $m$ notée $\tn{dec}(m)$ pour désigner celle qui fait intervenir
+  le plus de lettres dans les palindromes. Si deux décompositions font intervenir autant de lettres,
+  on introduit un ordre lexicographique sur le rang (position de la première lettre du sous-mot dans le mot) des sous-palindromes.
+  La décomposition de mot est donc unique.
+  De la même manière, on appelle ced la fonction qui à partir d'une décomposition (donc n-uplet) renvoie la concaténation des sous-mots.
+\end{defn}
+
+\begin{ex}{Décompositions}
+  Dans le mot “zoologique”, on a les sous-palindromes “oo” et “olo”. Or “oo\ \_\ \_” $\cap$ “\_\ olo” = “\_\ o\ \_\ \_” $\ne\emptyset$.
+  On choisit la décomposition faisant intervenir “olo” car len(“olo”) = 3 > len(“oo”) = 2.\\
+  Ainsi : dec(“zoologique”) = (“zo”, “olo”, “gique”)
+
+  Dans le mot “maracas” (instrument de musique), on a les sous-palindromes “ara” et “aca”.
+  Or : $\tn{“ara\ \_\ \_”}\cap\tn{“\_\ \_\ aca”}=“\tn\_\ \_\ {\tn{a}\ \_\ \_}$”. On choisit la décomposition faisant intervenir “ara” car rang(“ara”) = 2 < rang(“aca”) = 4.\\
+  Ainsi : dec("maracas") = (“m”, “ara”, “cas”)
+\end{ex}
+
+\begin{defn}{pals, palt}
+  On introduit les fonctions :
+  $$\tn{palt} : \ \begin{aligned}
+      \tn{Mots}^n                          & \rightarrow\tn{Mots}^n                          \\
+      (\tn{m}_i)_{1\leqslant i\leqslant n} & \mapsto(\tn{m}_{n-i})_{1\leqslant i\leqslant n}
+    \end{aligned}$$
+  $$\tn{pals} : \ \begin{aligned}
+      \tn{Mots}^n                          & \rightarrow\tn{Mots}^n                                \\
+      (\tn{m}_i)_{1\leqslant i\leqslant n} & \mapsto(\tn{pal}(\tn{m}_i))_{1\leqslant i\leqslant n}
+    \end{aligned}$$
+  Alors : $$\tn{pal}=\tn{ced}\circ\tn{palt}\circ\tn{pals}\circ\tn{dec}$$
+\end{defn}
+
+\begin{rem}{Appellation et symétrie}
+  Le t de palt signifie total et le s de pals signifie sous.\\
+  palt et pals sont également des symétries.
+\end{rem}\ \\
+
+\begin{ex}{Utilisation de pals et palt}
+  Sur le mot “maracas” :
+  \begin{align*}
+    \tn{pal}(\tn{“maracas”}) & =\tn{ced}\circ\tn{palt}\circ\tn{pals}\circ\tn{dec}(\tn{“maracas”})        \\
+                             & =\tn{ced}\circ\tn{palt}\circ\tn{pals}(\tn{“m”},\ \tn{“ara”},\ \tn{“cas”}) \\
+                             & =\tn{ced}\circ\tn{palt}(\tn{“m”},\ \tn{“ara”},\ \tn{“sac”})               \\
+                             & =\tn{ced}(\tn{“sac”},\ \tn{“ara”},\ \tn{“m”})                             \\
+                             & =\tn{“sacaram”}
+  \end{align*}
+\end{ex}
+
+\begin{histoire}{Mattéo Leturcq\tutu Daligaux}
+  \includegraphics[width=\textwidth]{images/matteo.jpg}
+
+  Mattéo Leturcq\tutu Daligaux (2003-) est un mathématicien français né à Paris qui étudie à la prépa
+  très prestigieuse Pierre de Fermat pour pouvoir en apprendre toujours plus sur les mathématiques.
+  C'est dans le cadre de ses études sur la très récente théorie des mots qu'il découvre son théorème
+  majeur et invente les fonctions pal, pals, palt et verlan, permettant ainsi un grand développement
+  de la théorie.
+\end{histoire}
+
+\begin{ana}{Étude de la symétrie pals}
+  Dans l'exemple précédent, lorsque l'on a appliqué : $$\tn{pals}\circ\tn{dec}(\tn{“maracas”})=(\tn{“m”},\ \tn{“ara”},\ \tn{“sac”})$$
+  on se retrouve avec une partie palindromiale inchangée : $\tn{“\_\ ara\ \_\ \_\ \_”}$
+  et une partie non-palindromiale inversée : $\tn{“m\ \_\ \_\ \_\ sac”}$.
+  Si par la suite on applique palt, on brise la symétrie car on change aussi la partie palindromiale, qui devient ici $\tn{“\_\ \_\ \_\ ara\ \_”}$.
+  C'est pourquoi on s'intéresse à $\tn{ced}\circ\tn{pals}\circ\tn{dec}$, on a même les éléments caractéristiques de la symétrie :
+
+  Soit $m\in \tn{Mots}$,
+  $$\tn{dec}(m)=(m_i)_{1\leqslant i\leqslant n}=(\epsilon_\tn{Pal}(m_i))_{1\leqslant i\leqslant n}+(\epsilon_{\tn{M}^-}(m_i))_{1\leqslant i\leqslant n}$$
+  Avec : \begin{align*}
+    \epsilon_\tn{Pal}:m_i   & \mapsto m_i\tn{ si }m_i\in\tn{Palindromes},\ “\_\ \_\ \dots\ \_”\tn{ sinon} \\
+    \epsilon_{\tn{M}^-}:m_i & \mapsto m_i\tn{ si }m_i\in\tn{Mots}^-,\ “\_\ \_\ \dots\ \_”\tn{ sinon}
+  \end{align*}
+  Il s'agit de la décomposition de $m$ suivant la somme directe $\tn{Mots}=\tn{Palindromes}\oplus\tn{Mots}^-$, que l'on note : $m=m_\tn{Pal}+m_{\tn{M}^-}$\\
+  Ainsi : \begin{align*}
+    \tn{ced}\circ\tn{pals}\circ\tn{dec}(m) & =\tn{ced}\circ\tn{pals}((\epsilon_\tn{Pal}(m_i))_{1\leqslant i\leqslant n}+(\epsilon_{\tn{M}^-}(m_i))_{1\leqslant i\leqslant n})       \\
+                                           & =\tn{ced}((\tn{pal}(\epsilon_\tn{Pal}(m_i)))_{1\leqslant i\leqslant n}+(\tn{pal}(\epsilon_{\tn{M}^-}(m_i)))_{1\leqslant i\leqslant n}) \\
+                                           & =\tn{ced}((\epsilon_\tn{Pal}(m_i))_{1\leqslant i\leqslant n})+\tn{ced}((\tn{pal}(\epsilon_{\tn{M}^-}(m_i)))_{1\leqslant i\leqslant n}) \\
+                                           & =m_\tn{Pals}+\tn{ced}\circ\tn{pals}\circ\tn{dec}(m_{\tn{M}^-})
+  \end{align*}
+  On en déduit le théorème suivant :
+\end{ana}
+
+\begin{thm}{Théorème du Turc d'Aligot (HP)}
+  $\tn{ced}\circ\tn{pals}\circ\tn{dec}$ est une symétrie de direction $\tn{Mots}^-$ par rapport à Palindromes.
+\end{thm}
+
+\section{Démonstration de la suprématie des MP3}
+
+\begin{heu}{Utilité de la fonction palindrome}
+  Les deux premières démonstrations se concentrent sur des résultats sans trop de lien avec le 2.1.
+  Elles se concentreront sur l'utilisation de la fonction pal.
+  Nous allons ainsi démontrer la suprématie des MP3 par rapport aux autres filières puis utiliser la propriété de somme directe.
+\end{heu}
+
+\begin{att}{Ordre strict}
+  Ne pas confondre la relation d'inclusion
+  avec la relation d'ordre strict de la suprématie (<).
+  Cependant, l'inclusion implique la quasi-suprématie : \\
+  $\forall C1, C2 \in \Part(\EF),\ C1 \subset C2 \Rightarrow C1 \leqslant C2$
+\end{att}
+
+\setcounter{subsection}{-1}
+\subsection{ECS}
+
+\begin{thm}{Sur les ECS}
+  Les ECS n'existent pas.
+\end{thm}
+
+\begin{dem}
+  Soit l'évènement ECS = “Les ECS existent”.\\
+  pal(“ECS”) $=$ “SCE” donc $\Prob$[pal(“ECS”)] = $\Prob$[“SCE”] = $\Prob$(SCE) \\
+  Par chance, $[] : (\tn{Mots}, \tn{pal}) \rightarrow (\Omega,\complement)$ est un morphisme bijectif de groupes
+  (pas démontré en cours parce que “pas le temps”) donc
+  “SCE” = [Pal(“ECS”)] $= \complement(\tn{ECS})$ ainsi $\Prob(\tn{ECS}) = 1 - \Prob$[“SCE”] $= 1-\Prob(\tn{SCE})$ \\
+  Or, SCE est un Système Complet d'Évènements donc $\Prob$(SCE) = 1 donc $\Prob(\tn{ECS}) = 0$ \\
+  Donc les ECS n'existent pas (presque sûrement).
+\end{dem}
+
+\subsection{HK}
+
+\begin{thm}{Sur les HK}
+  Les HK sont vides, contrairement aux MPSI3 (ex : Adam $\in$ MPSI3) et donc MPSI3 > HK.
+\end{thm}
+\begin{dem}
+  pal(“HK”) $=$ “KH” donc pal(“HK”) est KH-intégrable, ainsi
+  $$\int_0^1{\tn{pal(“HK”)}d\tn{kh}}
+    = \int_0^1{\tn{“KH”}d\tn{kh}}$$
+  Or les hypokhâgnes (HK) (entre la 0\textsuperscript{e} et la 1\textsuperscript{ère} année)
+  dérivent en khâgnes (KH) et de plus, HK ne dépend pas de KH car ils sont sur 2 cycles différents donc :
+  \begin{align*}
+    \tn{“KH”} = \tn{“KH”}\int_0^1{d\tn{kh}} & = \tn{“HK”}'\int_0^1{d\tn{kh}}                                 \\
+                                            & = \int_0^1{\tn{“HK”}'d\tn{kh}}\ \tn{ par indépendance}         \\
+                                            & =[\tn{“HK”}]_0^1 = \tn{“HK”}\ \tn{ par th. fond. de l'analyse}
+  \end{align*}
+  Donc “KH” $=$ “HK” càd pal(“HK”) $=$ “HK” \\
+  Ainsi $\tn{“HK”}\in\tn{Palindromes}$ \\
+  Il n'en reste pas moins que : “H” $\ne$ “K” donc $\tn{“HK”}\notin\tn{Palindromes}$
+  $\tn{Pal}\cap\tn{Mots}^-=\{“\_”\}$, on conclut que $\tn{“HK”}=“\_”$.\\
+  Ainsi les HK sont vides.
+\end{dem}
+
+\subsection{Chartes}
+
+\begin{voir}{Chartreux}
+  \includegraphics[width=\textwidth]{images/chartreux.png}
+\end{voir}
+
+\begin{thm}{Sur les Chartes}
+  Les Chartes sont seuls et flemmards.
+\end{thm}
+
+\begin{dem}
+  Commençons par établir que : $$\tn{ux} \times \tn{Charte} = \tn{Chartreux} = \tn{Chat (illustration)}$$
+  Donc : $$\tn{pas}\times(\tn{ux} \times \tn{Charte}) = \tn{pas}\times\tn{Chat} = \tn{Pacha} = \tn{Flâneur}$$
+  Ainsi $$\tn{ux}\times\tn{Charte} = \tn{pas}^{-1}\times\tn{Flâneur} = \tn{id}\times\tn{Flâneur}=\tn{Flâneur}$$
+  Or, ux est l'abbréviation de uxor (mot latin signifiant époux, marié) donc : $\tn{ux}^{-1}=\tn{seul}$\\
+  Donc : $\tn{Charte} = \tn{seul}\times\tn{Flâneur}$\\
+  Ainsi tout Charte est seul et flemmard. Ce résultat est alors valable pour toute la classe Chartes.
+\end{dem}
+
+\begin{cor}{En termes de suprématie}
+  Chartes < MPSI3.
+\end{cor}
+
+\begin{dem}
+  Sur l'échelle de volonté, les MPSI3 sont aussi flemmards que les Chartes.
+  Cependant, sur l'échelle de la quantité, les MPSI3 sont loin d'être seuls (ils sont même 49).
+  Donc, par comparaison avec l'ordre lexicographique : MPSI3 > Chartes.
+\end{dem}
+
+\subsection{Bio}
+\subsubsection{\underline{Grenouilles}}
+
+\begin{thm}{Sur les Grenouilles}
+  La classe des Grenouilles est nulle, à l'inverse de la MPSI3. Il en découle la suprématie de la MPSI3 sur les Grenouilles.
+\end{thm}
+
+\begin{histoire}{Léo Guillet}
+  \includegraphics[width=174pt]{images/leo.jpg}
+  Léo Guillet : Né le 17 Janvier 2002, coincheur et scientifique de renom, il fut le
+  père fondateur de l'étude de l'omniprésence féminine des bios. Il prédit avec une exactitude et une
+  précision troublante de nombreux résultats dans le domaine. À croire qu'il se chargeait de prélever
+  ses théorèmes directement à la source.... Ce personnage est également entouré de controverses : ses
+  talents à la coinche seraient dûs une capacité de triche hors norme et certains disent qu'il aurait
+  arrêté ses recherches sur les bios pour se concentrer sur les ECS\dots
+\end{histoire}
+
+\begin{dem}
+  $$\tn{Grenouilles}=\tn{Reinettes}=\tn{tte}\times\tn{Reines}$$
+  On a $\proj_\tn{MPSI3}(\tn{Grenouilles})=\tn{tte}$ car Reine est une sous-classe de MPSI3\\
+  Or : $\tn{Reines} = \tn{MPSI3}\cap\tn{Filles}$ car “MP3 tous des rois”, donc :
+  \begin{align*}
+    \tn{male}\times\tn{Grenouilles} & =\tn{male}\times\tn{tte}\times\tn{Reines}    \\
+                                    & =\tn{malette}\times\tn{MPSI3}\cap\tn{Filles} \\
+                                    & =\tn{Mattéo}\cap\tn{Filles}=\emptyset
+  \end{align*}
+  En effet Mattéo est porteur de la malette infiniment souvent. Ainsi il n'existe pas de Grenouille mâle (résultat assez intuitif, il sufit de les observer, c.f. parenthèse historique).\\
+  Tout mâle possède les chromosomes $XY$ ce qui nous permet d'écrire que : $$XY\times\tn{Grenouilles}=\emptyset$$
+  En multipliant à gauche par $X^{-1}=\checkmark$, on obtient :
+  $$Y\times\tn{Grenouilles}=\checkmark\times\emptyset$$
+  On simplifie par $\checkmark$ : $$_/\times\tn{Grenouilles}=\emptyset$$
+  Puis par $/$ : $$\tn{Grenouilles}=0$$
+  Ainsi les Grenouilles sont nulles.
+\end{dem}
+\subsubsection{\underline{Poireaux}}
+
+\begin{thm}{Sur les Poireaux}
+  Les Poireaux sont détestés des gens, tandis que
+  les MPSI3, à l'image des trois terreurs de l'Ouest, sont incroyablement populaires
+  donc MPSI3 > Poireaux.
+\end{thm}
+
+\begin{dem}
+  \includegraphics[width=\textwidth]{images/sond.jpg}
+\end{dem}
+
+\subsection{PCSI}
+
+\subsubsection{\underline{PCSI1}}
+
+\begin{thm}{Sur les PCSI1}
+  Les PCSI1 sont solitaires : ils ne s'entraident pas.\\
+  Les MPSI3 unissant leurs forces et travaillant ensemble ont donc une cohésion de groupe plus forte que les PCSI1 et alors : MPSI3 > PCSI1
+\end{thm}
+
+\begin{dem}
+  D'après le théorème de l'avantage concurrentiel (cf. 2.2.), la PCSI1 admet une base $\mathcal{B}=(e_i)_{1\leqslant i\leqslant n}$.\\
+  Notons $M=\mathcal{M}_\mathcal{B}(\tn{PCSI1})$ la matrice de la famille des élèves de PCSI1 dans la base $\mathcal{B}$ :
+  $$M=\begin{pmatrix}
+      \substack{\tn{AdjaYanis}                                \\\displaystyle\overbrace{\lambda_{1,1}}} &
+      \substack{\tn{AlmairacLouis}                            \\\displaystyle\overbrace{\lambda_{1,2}}} & \cdots &
+      \substack{\tn{VignonTanguy}                             \\\displaystyle\overbrace{\lambda_{1,46}}} \\
+      \lambda_{2,1} & \lambda_{2,2} & \cdots & \lambda_{2,46} \\
+      \vdots        & \vdots        & \cdots & \vdots         \\
+      \lambda_{n,1} & \lambda_{n,2} & \cdots & \lambda_{n,46}
+    \end{pmatrix}$$
+  Le noyau des PCSI1 est par définition leur mascotte, qu'ils n'ont plus (car on leur a volée), ainsi : $\ker M=\{0\}$\\
+  Les colonnes de $M$ forment donc une famille libre, i.e. il n'y a aucune relation linéaire entre les PCSI1, ce qui signifie qu'ils ne travaillent pas ensemble.
+\end{dem}
+
+\begin{exercice}
+  Démontrer que les PCSI1 sont des imbéciles heureux.
+\end{exercice}
+
+\begin{correction}
+  Notons, pour chaque classe $C$ : $$\tn{fun}_C : \ \begin{aligned}
+      \Car & \rightarrow C                   \\
+      c    & \mapsto c\times\tn{fun}\times C
+    \end{aligned}$$
+  la fonction qui à un caractère associe l'amusement que les élèves de la classe $C$ retirent du caractère.\\
+  On remarque que $\tn{fun}_\tn{PCSI1}=0$ lorsqu'elle est appliquée à pasDeBourriquet, donc
+  $$\ker(\tn{fun}_\tn{PCSI1})=\tn{fun}(\ker \tn{PCSI1})=\{\tn{pasDeBourriquet}\}$$
+  Rappelons que $\ker \tn{PCSI1} = \{\tn{Bourriquet}\}$ car il s'agit de leur mascotte, ainsi : $$\tn{fun}\{\tn{Bourriquet}\}=\{\tn{pasDeBourriquet}\}$$
+  Or, nous avons volé la mascotte des PCSI1 donc $\{\tn{pasDeBourriquet}\}=0$ et $\{\tn{Bourriquet}\}=1$.\\
+  Ainsi $\tn{fun}(0)=1$, autrement dit les PCSI1 s'amusent avec rien donc les PCSI1 sont des imbéciles heureux.
+\end{correction}
+
+\subsubsection{\underline{PCSI2}}
+
+\begin{lem}{Lemme de Mallet}
+  \centering $1=2$.
+\end{lem}
+
+\begin{histoire}{Grégoire Mallet}
+  \includegraphics[width=\textwidth]{images/gregoire.jpg}
+  Grégoire Mallet (2002-) né le 29 juillet, est un mathématicien et astronome français surtout connu
+  pour avoir résolu des problèmes d'astronomie importants tels que la périodicité quadratique de la
+  comète de Mallet. En expérimentateur de génie, il est aussi le fondateur de la mécanique des flamby.
+  Ses quelques travaux en mathématiques et notamment son lemme, qu'il publia pour la première fois en
+  2021 dans un article de \textit{Sciences Plotistes} lui valurent une renommée internationale.
+\end{histoire}
+
+\begin{dem}
+  Dans le cours sur le calcul matriciel (chapitre 23), nous avons la propriété suivante :
+  $$\forall A, B \in \mathcal{M}_n(\R),\ A^T + B^T = (A+B)^T$$
+  Appliquons ce résultat avec $T=0$ et $n=1$, $A$ et $B$ sont alors identifiables à des réels $a$ et $b$, et on a :
+  $$a^0+b^0=(a+b)^0\tn{ soit : }1+1=1\tn{ ou encore : }2=1$$
+\end{dem}
+
+\begin{cor}{Sur les PCSI2}
+  MPSI3 > PCSI2.
+\end{cor}
+
+\begin{dem}
+  On a établi dans le 3.4.1 que MPSI3 > PCSI1.\\
+  Grâce au lemme de Mallet, on a immédiatement : PCSI1 $=$ PCSI2 donc MPSI3 > PCSI2
+\end{dem}
+
+\subsection{MPSI$\boldsymbol{X}$, $\boldsymbol{X\ne 3}$}
+
+\subsubsection{\underline{MPSI1}}
+
+\begin{defn}{Norme $\Vert\dashedph[x]\Vert_\tau$}
+  La norme $\Vert\dashedph[x]\Vert_\tau : \Part(\EF) \rightarrow \N$ associe à une classe le nombre de chapitres réalisés dans une matière précisée préalablement.
+\end{defn}
+
+\begin{dem}
+  Le nombre de chapitres à couvrir en prépa au cours des deux années est é-norme. Donc il s'agit bien d'une norme.
+\end{dem}
+
+\begin{thm}{Sur les MPSI1}
+  $\tn{MPSI1}=o(\tn{MPSI3})$, ce qui entraîne directement que MPSI3 > MPSI1.
+\end{thm}
+
+\begin{dem}
+  Les MPSI1 sont en retard sur le programme. En effet, ils ont cours la dernière semaine alors que Pichoff ne fait là que du hors programme aux MPSI3.
+  Donc $\Vert\tn{MPSI1}\Vert_\tau < \Vert\tn{MPSI3}\Vert_\tau$.\\
+  Soit $\epsilon > 0$. $$\epsilon\Vert\tn{MPSI3}\Vert_\tau=\Vert\epsilon\tn{MPSI3}\Vert_\tau$$
+  On a vu que pal est une symétrie orthogonale donc une isométrie, ainsi pal ne change pas la norme :
+  $$\Vert\epsilon\tn{MPSI3}\Vert_\tau=\Vert\tn{pal}(\epsilon\tn{MPSI3})\Vert_\tau$$
+  On sait aussi que $\tn{pal}=\tn{ced}\circ\tn{palt}\circ\tn{pals}\circ\tn{dec}$, et la décomposition de $\epsilon$MPSI3
+  est ($\epsilon$, MPSI3).
+  En effet :
+  \begin{align*}
+    \tn{MPSI3 est un palindrome} & \Leftrightarrow \tn{MPSI3 n'est pas un lindrome} \\ &\Leftrightarrow \tn{MPSI3 n'est pas l'un des DROM}
+  \end{align*}
+  Et MPSI3 est un royaume (cf. Fermap) et donc non un DROM (Département et région d’outre-mer). Ce n’est donc pas l’un des DROM,
+  ainsi MPSI3 est un palindrome donc pal(MPSI3) = MPSI3.
+  Ensuite : $$\forall n,\ \tn{pal}(\epsilon)=\tn{pal}^n(\epsilon)\underset{n\rightarrow\infty}{\longrightarrow}3$$
+  En effet, $\epsilon$ s'est tellement fait retourner par les pal qu'il en est désorienté.
+  Donc pal($\epsilon$MPSI3) = MPSI33. Ainsi :
+  $$\epsilon\Vert\tn{MPSI3}\Vert_\tau=\Vert\tn{MPSI33}\Vert_\tau=\Vert\tn{MPSI3}\times 11\Vert_\tau=11\Vert\tn{MPSI3}\Vert_\tau$$
+  Donc : $\Vert\tn{MPSI1}\Vert_\tau < \epsilon\Vert\tn{MPSI3}\Vert_\tau$\\
+  Finalement : $\tn{MPSI1} = o(\tn{MPSI3})$
+\end{dem}
+
+\begin{voir}{Fermap}
+  \includegraphics[width=\textwidth]{images/fermap.jpg}
+\end{voir}
+
+\subsubsection{\underline{MPSI2}}
+
+\begin{thm}{Sur les MPSI2}
+  Les MPSI3 écrasent les MPSI2, ce qui a pour conséquence immédiate que MPSI3 > MPSI2.
+\end{thm}
+
+\begin{dem}
+  Mme Goutelard a dit “Prenez exemple sur les MP3, eux au moins ils travaillent !” \\
+  De plus, Mme Goutelard est contrainte de rajouter des heures sup aux MP2 le samedi afin d’espérer rattraper le fabuleux M. Lagoute.\\
+  Ainsi, $\Vert\tn{MPSI3}\Vert_\tau > \Vert\tn{MPSI2}\Vert_\tau$  et Lagoute > Goutelard. Donc MPSI3 $>>$ MPSI2 (relation d'écrasement) par combinaison des inégalités.
+\end{dem}
+
+\begin{sfaire}{Méthodes pour prouver une suprématie}
+  Pour démontrer la suprématie d'une Filière par rapport à une autre, nous avons utilisé :
+  \begin{enumerate}
+    \item la fonction pal pour modifier la signification du nom d'une filière
+    \item la multiplication par des caractères (profiter de la malléabilité de $\Car$) pour altérer la forme d'une classe
+    \item le recours à des rôles plotistes (cf. GFO) et à des informateurs provenant des différentes classes (cf. MPSI2 et Léo)
+  \end{enumerate}
+  Tandis que les méthodes 1. et 3. sont plus des stratégies circonstancielles se basant sur des
+  coïncidences, la méthode 2., par l'utilisation des caractères, de par sa richesse quasiment infinie,
+  peut à peu près tout démontrer pourvu que l'on prenne le temps de s'y atteler et d'avoir un peu d'imagination.
+  Si vous ne savez pas où commencer un exercice car vous n'avez repéré aucun levier sur lequel faire travailler vos fonctions
+  de référence, penchez-vous vers les caractères !
+\end{sfaire}
+
+\subsection{Général}
+
+\begin{thm}{Théorème fondamental de Layton}
+  $\forall C \in \Part(\EF),\ C \leqslant \tn{MPSI3}$\\
+  Si $\proj_\tn{MPSI3}(C)=0$, alors $C < \tn{MPSI3}$.
+\end{thm}
+
+\begin{plusloin}{Structure topologique des filières}
+  On peut également trouver des résultats topologiques plus généraux sur l’espace normé $\Fil$.
+  Ainsi on démontre que $\Fil$ est connexe mais n’est pas connexe par arcs (en effet, il n’existe pas
+  de chemins reliant \tn{ECS} et \tn{MPSI} restant dans $\Fil$). $\Fil$ est également un ouvert de $\Part(\EF)$ :
+  il y a une grande ouverture entre les filières grâce aux SOIFs.
+\end{plusloin}
+
+\begin{heu}{Démonstration}
+  L'idée va être que pour toute classe $C$ de $\Part(\EF)$, on peut “découper” la classe en des “morceaux” appartenant à chacune des filières.
+  Or, on peut utiliser tous les théorèmes qu'on a précédemment démontrés pour trouver pour chaque morceau une sous-classe de MPSI3 supérieure au morceau.
+  En recollant les morceaux supérieurs à chacun des morceaux de $C$, on obtient une sous-classe inférieure à MPSI3.
+\end{heu}
+
+\begin{dem}
+  On a :
+  \begin{align*}
+    \Part(\EF)= & \Part(\tn{HK}) \oplus\Part(\tn{Chartes}) \oplus\Part(\tn{Grenouilles}) \oplus \\
+                & \Part(\tn{Poireaux}) \oplus \Part(\tn{PCSI1}) \oplus\Part(\tn{PCSI2}) \oplus  \\
+                & \Part(\tn{MPSI1}) \oplus\Part(\tn{MPSI2}) \oplus\Part(\tn{MPSI3})
+  \end{align*}
+  Ainsi toute classe $C\in\Part(\EF)$ s'écrit comme la somme directe de sous-filières de chaque filière :
+  $$C=C_{\tn{MPSI3}} \uplus \biguplus_{\substack{F \in \Fil \\ F \ne \tn{MPSI3}}}C_F\ \tn{ où }\ C_{\tn{MPSI3}} \subset \tn{MPSI3}\tn{ et }C_{F}\subset F$$
+  Or, d'après toutes les démonstrations précédentes du 3. :
+  $$\forall F \in \Fil\backslash\{\tn{MPSI3}\},\ \forall G \in \Part(F),\ \exists D \in \Part(\tn{MPSI3}),\ G < D$$
+  $D$ étant incluse dans MPSI3, on a : $D \leqslant \tn{MPSI3}$\\
+  Alors par transitivité de $(<)$ : $G < \tn{MPSI3}$\\
+  Donc : $$\biguplus_{\substack{F \in \Fil \\ F \ne \tn{MPSI3}}}C_F < \tn{MPSI3}$$
+  Si $\proj_\tn{MPSI3}(C)=0$, i.e. $C_\tn{MPSI3}=0$, alors $C=\biguplus_{\substack{F \in \Fil \\ F \ne \tn{MPSI3}}}C_F$ donc $C < \tn{MPSI3}$\\
+  Sinon, on a au moins : $C \leqslant \tn{MPSI3}$
+\end{dem}
+
+\section{Bilan}
+
+\subsubsection{\underline{Synthèse}}
+
+\begin{itemize}
+  \item[$\rightsquigarrow$] L’algèbre fermatienne se base donc sur l’abus de l’usage des caractères. Il existe ainsi une pléthore de façons de démontrer la supériorité de la classe de MPSI3 grâce à l’usage et la manipulation des caractères. Choisissez la vôtre !
+  \item[$\rightsquigarrow$] Les palindromes permettent d’offrir plus de possibilités de manipulation des caractères des mots et d’en tirer des propriétés par la suite applicables sur l’espace fermatien s’adaptant particulièrement bien à sa structure.
+  \item[$\rightsquigarrow$] La suprématie d’une classe par rapport à une autre s'établit donc grâce à une manipulation habile, mais surtout à travers les caractéristiques intrinsèques aux classes comparées.
+\end{itemize}
+
+\subsubsection{\underline{Savoir-faire et Truc \& Astuce du chapitre}}
+
+\begin{itemize}
+  \item[216.] Savoir-faire - Méthodes pour prouver une suprématie
+\end{itemize}
+
+\subsubsection{\underline{Notations}}
+
+\footnotesize
+%\zspace\zspace\zspace\zspace\zspace\zspace\zspace\zspace\zspace\zspace
+\begin{tabular}{p{2.5cm} p{5cm}p{5cm}p{4cm}}
+  \hline \textit{Notations}     & \textit{Définitions}                                                         & \textit{Propriétés}                                           & \textit{Remarques}                                                             \\
+  \hline $\EF$                  & Ensemble des élèves de Fermat                                                & $\FF = \AF \uplus \EF \uplus \PF$                             & Il s'agit des briques élémentaires de l'algèbre fermatienne                    \\
+  $\Car$                        & Ensemble des caractéristiques des élèves de Fermat                           &                                                               & Un élément de $\Car$ est appelé caractère                                      \\
+  $\Part(\EF)$                  & Ensemble des classes de $\EF$                                                & $\Part(\FF) = \Part(\AF) \oplus \Part(\EF) \oplus \Part(\PF)$ & $\Part(\EF)$ est un $\Car$-ev                                                  \\
+  Alphabet                      & Ensemble des lettres                                                         & Alphabet = \{a, b, \dots, z\}                                 & Il s'agit des briques élémentaires de l'algèbre palindromiale                  \\
+  Mots                          & Ensemble des listes de lettres de Alphabet $\cup$ \{“\_”\}                   &                                                               & Un élément de Mots est appelé un mot                                           \\
+  pal                           & Retourne un mot                                                              &                                                               &                                                                                \\
+  Palindromes                   & Sous-ensemble des mots invariants par pal                                    & Palindromes est une droite vectorielle de Mots                & Un élément de Palindromes est appelé palindrome                                \\
+  Mots$^-$                      & Mots$^-$ = Mots \textbackslash Palindromes                                   &                                                               &                                                                                \\
+  $p_c$                         & Projection sur sur $C$                                                       &                                                               & Renvoie la composante d’un élément selon son appartenance à $C$                \\
+  $\equiv$                      &                                                                              & Relation d'équivalence                                        &                                                                                \\
+  $<$                           & Relation de suprématie entre deux ensembles                                  &                                                               &                                                                                \\
+  $\Fil$                        & Ensemble des filières                                                        & Elles paritionnent $\EF$                                      &                                                                                \\
+  $\Vert\dashedph[x]\Vert_\tau$ & Norme d’un vecteur représentant le nombre de chapitre que le vecteur a finis & C'est une norme                                               & Elle permet de classer les classe en fonction du travail mathématique effectué
+\end{tabular}
+
+\subsubsection{\underline{Retour sur les problèmes}}
+
+\begin{itemize}
+  \item[159.] Les lois d'interaction des ensembles permettent dans un premier temps de gérer les élèves,
+    mais la connaissance du langage à travers les mots et les palindromes notamment permet d'approfondir
+    cette maîtrise des interactions fermatiennes.\\
+  \item[160.] La MP3, étant composée de Rois et Reines, se situe au pinacle de la hiérarchie fermatienne.
+    On a donc démontré que toutes les autres classes étaient dominées et donc assujetties par la MP3
+    grâce à notre fantastique versatilité dans tous les domaines. Comme l'a dit la reine d'angleterre
+    sur memep3 : “La MP3 est la meilleure classe de Fermat”.
+\end{itemize}

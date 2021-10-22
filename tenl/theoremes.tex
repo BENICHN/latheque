@@ -1,0 +1,220 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[margin=0.1cm,paperwidth=5cm,paperheight=5cm]{geometry}
+\usepackage{setspace}
+\usepackage{calc}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{dashbox}
+\usepackage{kmath,kerkis}
+\usepackage[T1]{fontenc}
+
+\pagestyle{empty}
+\topskip0pt
+
+\newcommand\dashedph[1][H]{\setlength{\fboxsep}{0pt}\setlength{\dashlength}{2.2pt}\setlength{\dashdash}{1.1pt} \dbox{\phantom{#1}}}
+
+\newcommand\ps[2]{\ <\! #1\  |\  #2\! >}
+\newcommand\pss[2]{\ <\! #1 \, |\, #2\! >}
+\newcommand\rg{\textnormal{rg}\ }
+\newcommand\vect{\textnormal{vect}\ }
+\newcommand\R{\mathbb{R}}
+\newcommand\C{\mathbb{C}}
+\newcommand\N{\mathbb{N}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\Q{\mathbb{Q}}
+\newcommand\vs{\vspace{5pt}}
+\newenvironment{demo}[1][\Large]{
+    \begin{center}
+    #1
+    \itshape
+    \vspace*{\fill}
+    \noindent}{
+    \vspace*{\fill}
+    \end{center}}
+
+\begin{document}
+\begin{demo}
+    $\mathcal{C}[a,b] = \mathcal{U}[a,b]$
+\end{demo}
+\clearpage
+\begin{demo}
+    $\forall \delta : [a,b]\rightarrow\R_+^*$\\ $\mathfrak{S}_\delta\ne\emptyset$
+\end{demo}
+\clearpage
+\begin{demo}
+    Toute suite bornée admet une sous-suite convergente
+\end{demo}
+\clearpage
+\begin{demo}
+    $\forall f\in\mathcal{D}[a,b]$ \\ \vs
+    $f'\in\mathcal{I}[a,b]$ et : \\ \vs
+    $\displaystyle\int_a^b{f'}=f(b)-f(a)$
+\end{demo}
+\clearpage
+\begin{demo}
+    $\forall P \in \C[X],\ \exists z \in \C,$ \\
+    $P(z)=0$
+\end{demo}
+\clearpage
+\begin{demo}[\Large]
+    $\forall f\in\mathcal{C}[a,b]\cap\mathcal{D}]a,b[$ \\
+    $\exists\, c\in\ ]a,b[$ \\ \vs
+    $f'(c)=\dfrac{f(b)-f(a)}{b-a}$
+\end{demo}
+\clearpage
+\begin{demo}[\large]
+    Soient $f,g\in\mathcal{D}]a,b[$ avec $g'\ne 0$ au voisinage de $c$ et \\
+    $\underset{c}{\lim\ }f=\underset{c}{\lim\ }g=0\text{ ou }+\infty$ \\ \vs
+    Alors : \\ \vs
+    $\underset{c}{\lim\ }\dfrac{f'}{g'}=l\in\overline{\R} \Rightarrow \underset{c}{\lim\ }\dfrac{f}{g}=l$
+\end{demo}
+\clearpage
+\begin{demo}[\normalsize]
+    Soient $f\in\mathcal{I}[a,b]$, $\epsilon > 0,$ et $\delta : [a,b]\rightarrow\R_+^*$ \\ \vs
+    $\forall \sigma \in \mathfrak{S}_\delta,\ \left| S(f,\sigma) - \displaystyle\int_a^bf \right| \leqslant \epsilon$ \\
+    $\Downarrow$ \\
+    $\forall \sigma=([x_{k-1},x_k],t_k)_{1\leqslant k\leqslant n} \in \mathfrak{S}_\delta,$ \\
+    $\forall I \subset \llbracket 1,n \rrbracket,$\\
+    $\left| \displaystyle\sum_{k\in I}\displaystyle\int_{x_{k-1}}^{x_k}(f(t_k)-f) \right| \leqslant \epsilon$
+\end{demo}
+\clearpage
+\begin{demo}
+    Soit $E$ eucliduen.
+    $\forall\phi\in E^*,\ \exists! a\in E,$ \\
+    $\phi=\ps{a}{\dashedph[x]}$
+\end{demo}
+\clearpage
+\begin{demo}[\fontsize{11.5pt}{1.2pt*11.5pt}\selectfont]
+    Soient $E$ un espace préhilbertien et $x,y\in E$ \\ \vs
+    $\pss{x}{y}^2\ \leqslant \pss{x}{x}\pss{y}{y}$ \\ \vs
+    avec égalité ssi $(x,y)$ est une famille libre
+\end{demo}
+\clearpage
+\begin{demo}
+    $\forall M\in \mathcal{M}_{n,p}(\mathbb{K})$\\ \vs
+    $\rg M + \dim\ker M = p$ 
+\end{demo}
+\clearpage
+\begin{demo}
+    Soient les suites \\ \vs rationnelles $\substack{\displaystyle(d_n)\searrow \\ \displaystyle(c_n)\nearrow}$, \\ \vs
+    $(a_n)\nearrow\ \leqslant (d_n)$ et \\
+    $(f_n)\searrow\ \geqslant (c_n)$ \\ \vs
+    Alors : $(a_n) \leqslant (f_n)$
+\end{demo}
+\clearpage
+\begin{demo}
+    Soient $E=\vect\mathcal{G}$ et $\mathcal{L}$ libre de $E$ \\ \vs
+    Alors : $\#\,\mathcal{L} \leqslant \#\,\mathcal{G}$
+\end{demo}
+\clearpage
+\begin{demo}
+    Si $f\in\mathcal{C}[a,b]$, alors $f$ admet un minimum et un maximum sur $[a,b]$
+\end{demo}
+\clearpage
+\begin{demo}
+    Soient $E=\vect\mathcal{G}$ de dimension finie et $\mathcal{L}$ libre de $E$ \\ \vs
+    Il existe une base $\mathcal{B}$ de $E$ tq $\mathcal{B}\in\mathcal{L}\cup\mathcal{G}$
+\end{demo}
+\clearpage
+\begin{demo}
+    Soit $E$ un $\mathbb{K}$-espace vectoriel. \\
+    $\forall x\in E,\ \forall \lambda\in E$,
+    $0 \cdot x = \lambda \cdot 0 = 0$
+\end{demo}
+\clearpage
+\begin{demo}
+    Soient $F$ et $G$ deux sev de dimension finie de $E$. \\ \vs
+    $\dim(F+G)=\dim F + \dim G - \dim(F\cap G)$
+\end{demo}
+\clearpage
+\begin{demo}[\large]
+    $\exists!\ (v_p : \llbracket 2,+\infty \llbracket \rightarrow \N)_{p\in\mathcal{P}}$ \\ \vs
+    $\forall n \geqslant 2,\ n=\displaystyle\prod_{p\in\mathcal{P}}p^{v_p(n)}$
+\end{demo}
+\clearpage
+\begin{demo}
+    $\forall p\in\mathcal{P},\ \forall n\in\Z,$ \\ \vs
+    $n^p\equiv n\ [p]$
+\end{demo}
+\clearpage
+\begin{demo}
+    $\sqrt{2}\notin\Q$
+\end{demo}
+\clearpage
+\begin{demo}
+    $\mathcal{P}$ est infini
+\end{demo}
+\clearpage
+\begin{demo}
+    $\forall n \geqslant 1,\ \forall a\in\N,$ \\ \vs
+    $a \wedge n=1$ \\ $\Downarrow$ \\ $a^{\phi(n)}\equiv 1\ [n]$
+\end{demo}
+\clearpage
+\begin{demo}
+    Toute partie non vide majorée de $\R$ admet une borne supérieure
+\end{demo}
+\clearpage
+\begin{demo}
+    Soient $G$ un groupe fini et $H\lhd G$ \\ \vs
+    Alors : $\#\,H\,|\,\#\,G$
+\end{demo}
+\clearpage
+\begin{demo}[\large]
+    Soient $(a_n)$ et $(b_n)$ deux suites d'entiers. \\ \vs\vs
+    $(b_n)=\left(\displaystyle\sum_{k\leqslant n}{{n \choose k}a_k}\right)$ \\\vs
+    $\Downarrow$ \\
+    $(a_n)=\left(\displaystyle\sum_{k\leqslant n}{(-1)^{n-k}{n \choose k}b_k}\right)$
+\end{demo}
+\clearpage
+\begin{demo}[\large]
+    \begin{align*}
+        & \forall A\in\mathcal{M}_n(\mathbb{K}), \\
+        & \forall B\in\mathcal{M}_p(\mathbb{K}), \\
+        & \forall C\in\mathcal{M}_{n,p}(\mathbb{K}),
+    \end{align*} \vs
+    $\det\left[
+    \begin{array}{c|c}
+        A & C \\ 
+        \hline 0 & B
+    \end{array}\right] = \det A \det B$
+\end{demo}
+\clearpage
+\begin{demo}
+    Toute permutation sauf l'identité se décompose en un produit de cycles à supports disjoints unique à l'ordre près
+\end{demo}
+\clearpage
+\begin{demo}
+    En notant : \\\vspace{3pt}
+    $P=\left\{P_i^j\ \big|\ \substack{1\leqslant i\leqslant n \\ 1\leqslant j\leqslant n}\right\}$
+    $T=\left\{T_i^j(\lambda)\ \Big|\ \substack{1\leqslant i\leqslant n \\ 1\leqslant j\leqslant n \\ \lambda \in \mathbb{K}}\right\}$
+    $D=\left\{D_i(\alpha)\ \big|\ \substack{1\leqslant i\leqslant n \\ \alpha \in \mathbb{K}^*}\right\}$ \\ \vs
+    On a : $\textnormal{GL}_n(\mathbb{K})=\,<\!P,T,D\!>$
+\end{demo}
+\clearpage
+\begin{demo}
+    Soient $M\in\mathcal{M}_n(\mathbb{K})$ et $1\leqslant j\leqslant n$ une colonne. \\ \vs\vs
+    $\det M = \displaystyle\sum_{1\leqslant i\leqslant n}{^i[M]_j\, M_{i,j}}$
+\end{demo}
+\clearpage
+\begin{demo}
+    Soit $f\in\mathcal{C}(I)\cap\mathcal{D}(\mathring{I})$ \\ \vs
+    $f$ est croissante sur $I$ \\ $\Updownarrow$ \\ $f'$ est positive sur $\mathring{I}$
+\end{demo}
+\clearpage
+\begin{demo}[\large]
+    $\exists!\, \epsilon : (S_n, \circ) \rightarrow (\{-1,1\}, \times)$ \\ \vspace{3pt}
+    $\forall 1\! \leqslant\! i \!<\! j \!\leqslant\! n,\ \epsilon(\tau_i^j)=-1$
+\end{demo}
+\clearpage
+\begin{demo}[\large]
+    Soit $f:[a,b]\rightarrow\R$ \\ \vs\vs
+    $f\in\mathcal{I}[a,b]$ \\ \vspace{3pt}
+    $\Updownarrow$ \\ \vspace{2pt}
+    $\forall a \leqslant x < b,\ f\in\mathcal{I}[a,x]$ et $x\mapsto\displaystyle\int_a^xf$ continue en $b$
+\end{demo}
+\end{document}

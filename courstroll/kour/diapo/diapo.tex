@@ -1,0 +1,668 @@
+\documentclass{beamer} % Version pour la projection
+%\documentclass[trans]{beamer} %Version pour l'impression
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{beamerthemesplit}
+
+\usetheme{Montpellier}
+
+\useoutertheme{sidebar}
+%\usecolortheme{}
+\usepackage{amsfonts,amsmath,amssymb}
+%\usepackage[french,boxruled,linesnumbered,fillcomment,lined]{algorithm2e}
+%\usepackage{epic}
+\usepackage{fancyhdr}
+\usepackage{boites,boites_exemples}
+\usepackage{graphicx}
+%\usepackage{makeidx}
+%\usepackage{soul}
+%\mtcselectlanguage{francais}
+%\usepackage{vector}
+%\usepackage[metapost]{mfpic} 
+%\usepackage{subfigure}
+\usepackage[T1]{fontenc}
+%\usepackage{lxfonts}
+\usepackage{fouriernc}
+\usepackage[scaled=0.875]{helvet}
+\usepackage{courier}
+\usepackage{frcursive}
+
+\setbeamertemplate{blocks}[rounded]%
+[shadow=true]
+
+%\usetheme{Singapore}
+%%\usetheme{Copenhagen}
+%\usetheme{Montpellier}
+%\usepackage{auto-pst-pdf}
+
+%\usepackage{hyperref}
+\usepackage{multimedia}
+%\usepackage{movie15}
+
+
+\usepackage{color}
+\usepackage{tikz}
+
+\usepackage{color}
+
+\usecolortheme{beaver}
+
+\usecolortheme{seahorse}
+\usecolortheme{rose}
+
+%PSTRICKS FILES -------------------------------------------------------------
+%\usepackage{pstcol} % To use the standard "color" package with PSTricks
+%\usepackage{pst-node}
+%\usepackage{pst-plot}
+%\usepackage{xcolor}
+%\usepackage{pst-eucl}
+%\usepackage{pst-tree}
+%\usepackage{pstricks}
+
+% PSTricks extension to add ]-[ arrow lines
+\makeatletter
+\def\pst@arrowtable{,<->,<<->>,>-<,>>-<<,(-),[-],]-[}
+\def\tx@BracketOut{BracketOut }
+\@namedef{psas@[}{%
+/BracketOut { CLW mul add dup CLW sub 2 div /x ED mul CLW 1.75 mul sub
+/y ED /z CLW 2 div def x neg y moveto x neg CLW 2 div L x CLW 2 div
+L x y L stroke 0 CLW moveto } def
+\psk@bracketlength \psk@tbarsize \tx@BracketOut}
+\makeatother
+
+
+\usepackage{listings}
+
+\lstset{frame=tbR,
+basicstyle=\small,
+keywordstyle=\bf \color{black},
+%identifierstyle=\underline,
+commentstyle=\it \color[gray]{0.5},
+stringstyle=\color{red},
+showstringspaces=false,
+numbers=left,
+numberstyle=\tiny \bf \color{blue},
+numberfirstline=true,
+linewidth=10cm,xleftmargin=1cm,%aboveskip=5mm,belowskip=1 cm,
+float=!h,language=Python}
+
+\DeclareMathOperator*{\conc}{\scalerel*{++}{\sum}}
+\usepackage{scalerel}
+\usepackage{dashbox}
+
+\newcommand\dashedph[1][H]{\setlength{\fboxsep}{0pt}\setlength{\dashlength}{2.2pt}\setlength{\dashdash}{1.1pt} \dbox{\phantom{#1}}}
+
+
+% THEOREM Environments ---------------------------------------------------
+ 
+\newtheorem{Theo}{Théorème}
+ \renewcommand{\theTheo}{}
+ \newenvironment{thm}[1]{\begin{breakbox}\vspace*{-0,4cm}\begin{Theo}\begin{upshape}\textbf{- #1} $ $\\ }%
+ {\end{upshape}\end{Theo}\end{breakbox}}
+ \newtheorem{Coro}{Corollaire}
+ \renewcommand{\theCoro}{}
+ \newenvironment{cor}[1]{\begin{Coro}\begin{upshape}\textbf{- #1} $ $\\ }%
+ {\end{upshape}\end{Coro}}
+ \newtheorem{Lemme}{Lemme}
+ \renewcommand{\theLemme}{}
+ \newenvironment{lem}[1]{\begin{Lemme}\begin{upshape}\textbf{- #1} $ $\\ }%
+ {\end{upshape}\end{Lemme}}
+ \newtheorem{Propos}{Proposition}
+ \renewcommand{\thePropos}{}
+ \newenvironment{prop}[1]{\begin{breakbox}\vspace*{-0,4cm}\begin{Propos}\begin{upshape}\textbf{- #1} $ $\\ }%
+ {\end{upshape}\end{Propos}\end{breakbox}}
+ \newtheorem{Defi}{Définition}
+ \renewcommand{\theDefi}{}
+ \newenvironment{defn}[1]{\begin{Defi}\begin{upshape} \textbf{- #1} \end{upshape}
+ $ $\\}%\begin{bfseries}
+ {\end{Defi}}
+
+ \newenvironment{rem}[1]{\noindent \textbf{Remarque - #1} $ $\\}{}
+ \newenvironment{ex}[1]{\noindent \textbf{Exemple - #1} $ $\\}{}
+ \newenvironment{app}[1]{\noindent \textbf{Application - #1} $ $\\}{}
+ \newtheorem{Demonstration}{Démonstration}
+ % DÈfinition d'une structure de thÈorËme intitulÈ
+ % Demonstration
+ \renewcommand{\theDemonstration}{}
+ % Suppression de la numÈrotation de la structure
+ % Demonstration
+ \newenvironment{dem}{\begin{Demonstration}\begin{upshape} $ $\\ \small}%
+  {$\square$\end{upshape}\end{Demonstration}}
+ \newenvironment{exercice}{\underline{\textsf{Exercice}} $ $\\ \sffamily}{}
+ \newenvironment{info}{\underline{\textbf\texttt{INFORMATIQUE}} $ $\\  \ttfamily}{}
+ %\newenvironment{info}{\hspace*{1cm} \begin{informatique}}{}{\end{informatique}}
+ %\geometry{margin={1cm,1cm}}
+
+
+ %-------------------------------------------------------------------------
+ %MATH---------------------------------------------------------------------
+ 
+  \newcommand{\Perp}{\perp\!\!\!\!\!\perp}
+  \newcommand{\Reel}{\mathbf{Re}}
+ \newcommand{\Ima}{\mathbf{Im}}
+ \newcommand{\dd}{\textrm{d}}
+ \newcommand{\Bigcupplus}{+ \hspace{-10pt}\Bigcup}
+ \newcommand{\Bigcupplusdem}{+ \hspace{-9.2pt}\Bigcup}
+ \newcommand{\cupplus}{\uplus}
+ \newcommand{\R}{\mathbb{R}}
+ \newcommand{\K}{\mathbb{K}}
+ \newcommand{\C}{\mathbb{C}}
+ \newcommand{\N}{\mathbb{N}}
+ \newcommand{\Z}{\mathbb{Z}}
+ \newcommand{\Q}{\mathbb{Q}}
+ \newcommand{\U}{\mathbb{U}}
+ \newcommand{\F}{\mathbb{F}}
+ \newcommand{\D}{\mathbb{D}}
+ \newcommand{\re}{\textrm{Re }}
+ \newcommand{\im}{\textrm{Im }}
+ \newcommand{\Lin}{\mathcal{L}}
+ \newcommand{\Rel}{\mathcal{R}}
+ \newcommand{\Pro}{\mathcal{P}}
+ \newcommand{\Proq}{\mathcal{Q}}
+ \newcommand{\GLin}{\mathcal{GL}}
+ \newcommand{\Ce}{\mathcal{C}}
+ \newcommand{\Mat}{\mathcal{M}}
+ \newcommand{\tr}{\textrm{tr }}
+ \newcommand{\Fon}{\mathcal{F}}
+ \newcommand{\Ker}{\textrm{Ker }}
+ \newcommand{\Imm}{\textrm{Im }}
+ \newcommand{\rang}{\textrm{rang }}
+ \newcommand{\diag}{\textrm{diag} }
+ \newcommand{\Coef}{\textrm{Coef}}
+ \newcommand{\Card}{\mathrm{Card }}
+ \newcommand{\Tr}{\textrm{Tr }}
+ \newcommand{\vect}{\mathrm{vect}}
+ \newcommand{\Vect}{\mathrm{vect}}
+ \newcommand{\m}{\mathcal{A}}
+ \newcommand{\M}{\mathcal{M}}
+ \newcommand{\Dom}{\mathcal{D}}
+ \newcommand{\Base}{\mathcal{B}}
+ \newcommand{\W}{\mathcal{W}}
+ \newcommand{\X}{\mathcal{X}}
+ \newcommand{\Esp}{\mathbf{E}}
+ \newcommand{\Var}{\mathbf{V}}
+ \newcommand{\Cov}{\mathbf{Cov}}
+ \newcommand{\rg}{\mathrm{rg}}
+ \newcommand{\summ}{\sum\limits} 
+ \newcommand{\Int}{\displaystyle \int}
+ \newcommand{\Sum}{\displaystyle \sum}
+ \newcommand{\prodscal}[2]{\langle #1 \, , \,  #2 \rangle} %produit scalaire
+ \newcommand{\prodscala}[2]{\langle #1 \, | \,  #2 \rangle} %produit scalaire
+ \newcommand{\Bigcup}{\displaystyle \bigcup}
+ \newcommand{\Bigcap}{\displaystyle \bigcap}
+ \newcommand{\Lim}{\displaystyle \lim}
+ \newcommand{\Prod}{\displaystyle \prod}
+ \newcommand{\Binom}{\displaystyle \binom}
+ \newcommand{\sh}{\textrm{sh}}
+ \newcommand{\ch}{\textrm{ch}}
+ \newcommand{\Arctan}{\textrm{Arctan }}
+ \newcommand{\transpose}[1]{{\vphantom{#1}}^{\mathit t}{#1}}
+ \newcommand{\ligne}{$ $ \\ $ $
+ 
+ }
+ \newcommand{\ptt}{\forall \textrm{ }}
+ \newcommand{\exs}{\exists \textrm{ }}
+ \newcommand{\tq}{\ | \ }
+ \newcommand{\aspace}{\hspace*{0.5cm}}
+ \newcommand{\bspace}{\hspace*{1cm}}
+ \newcommand{\cspace}{\hspace*{1.5cm}}
+ \newcommand{\zspace}{\hspace*{-0,6cm}}
+ 
+ \newcommand{\yyspace}{\vspace*{-0,2cm}}
+ \newcommand{\zzspace}{\vspace*{-0,6cm}}
+ \newcommand{\partie}[1]{\textbf{\large{#1}}}
+ \newcommand{\souspartie}[1]{\textbf{#1}}
+ \newcommand{\oie}{[\!\![}
+ \newcommand{\fie}{]\!\!]}
+
+
+\title%[Pourquoi les mathématiques en PC ?\\
+%Revoir les bons réflexes de démonstration]
+{Leçon 117 -  Suprématie plotiste}
+\logo{ \includegraphics[width=1.5cm]{images/fmtbas.jpg}}
+%\author[AP]{Antoine Pichoff}
+%\institute{ECE - Lycée Vial}
+\date{25 juin 2021}
+
+\begin{document}
+
+\begin{frame}[plain]{}
+\end{frame}
+
+\frame{\begin{center}\includegraphics[width=8cm]{images/fmtmil.jpg}\end{center}\titlepage}
+
+\setbeamertemplate{background canvas}
+
+\tableofcontents
+
+%{\LARGE Objectifs}
+
+\section{\textcolor{red}{$\Rightarrow$ Définir l'algèbre Fermatienne}}
+
+\section{\textcolor{red}{$\Rightarrow$ Étudier les fonctions palindromiales}}
+
+\section{\textcolor{red}{$\Rightarrow$ Appliquer la caractérisation pour démontrer la suprématie}}
+
+%{\LARGE Plan du jour}
+\section{$ $}
+
+\subsection{1. Problèmes}
+
+\frame{\tableofcontents[currentsubsection]}
+
+\begin{frame}
+    \frametitle{Problèmes}
+    \textbf{Problèmes} Mettre au point l'algèbre fermatienne\\
+    \vspace{15pt}
+    \onslide<2->{\textbf{Problèmes} Comment classer les classes les unes par rapport aux autres ?}
+\end{frame}
+
+\newcommand\proj{p}
+\newcommand\Prob{\mathbb{P}}
+\newcommand\Part{\mathcal{P}}
+\newcommand\EF{\mathbb{E}_{\tn{Fer}}}
+\newcommand\PF{\mathbb{P}_{\tn{Fer}}}
+\newcommand\AF{\mathbb{A}_{\tn{Fer}}}
+\newcommand\FF{\mathbb{F}\tn{ermat}}
+\newcommand\Car{\mathbb{C}\tn{ar}}
+\newcommand\Fil{\mathbb{F}\tn{il}}
+\newcommand\tutu{$-\hspace{0.4pt}-$}
+\newcommand\tn[1]{\textnormal{#1}}
+
+\subsection{2. Généralités}
+\subsubsection{2.1. Espace vectoriel des classes dans Fermat}
+
+\frame{\tableofcontents[currentsubsection]}
+
+\begin{frame}
+    \frametitle{Éléments de base}
+    \begin{alertblock}{Définition - $\EF$ et $\Car$}
+        On appelle $\EF$ l'ensemble des élèves étudiant à la prépa du lycée Fermat.
+        On notera $\Car$ l'ensemble des caractéristiques que peut avoir un étudiant de $\EF$.
+        Un élément de $\Part(\EF)$ est appelé classe et un élément de $\Car$ est appelé caractère.
+        Par convention, les classes sont écrites en capitales et les caractères en minuscules.
+        
+        On peut additionner les éléments de $\Car$ et de $\Part(\EF)$ (respectivement entre eux)
+        selon la loi $\cup$ (d'inverse $\cap$) et multiplier les éléments de $\Car$ par les éléments de $\Part(\EF)$ ou de $\Car$ selon la loi $\times$.
+    \end{alertblock}
+    
+    \onslide<2->{\textbf{Exemple} Pour bien comprendre}
+    
+    \onslide<3->{\textbf{Remarque} Nomenclature}
+    
+    \onslide<4->{\textbf{Remarque} Bruni}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Ensemble des classes}
+    \begin{alertblock}{Proposition - Structure de $\Part(\EF)$}
+        $(\Part(\EF), \cup, \times)$ est un $\Car$-espace vectoriel.
+    \end{alertblock}
+    
+    \onslide<2->{\textbf{Exercice} Faire la démonstration.}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Relations}
+    \begin{alertblock}{Définition - Module et relation ($\equiv$)}
+        Pour une classe donnée $C$, on utilisera la notation $\proj_C : \Part(\EF) \rightarrow \Car$
+        pour désigner le caractère de la composante sur $C$ des éléments de $\Part(\EF)$.
+        
+        On notera aussi ($\equiv$) la relation telle que : \\
+        $\forall C1, C2 \in \Part(\EF),\ C1 \equiv C2 \Leftrightarrow \proj_{C1} =  \proj_{C2}$
+    \end{alertblock}
+    
+    \onslide<2->{\begin{alertblock}{Proposition - Nature de la relation ($\equiv$)}
+            La relation ($\equiv$) est une relation d'équivalence.
+        \end{alertblock}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Relations}
+    \textbf{Remarque} Inclusion\\
+    \vspace{15pt}
+    \onslide<2->{\textbf{Attention} Ordre partiel}
+    
+    \onslide<3->{\begin{alertblock}{Définition - Sous-classe}
+            Une partie d'une classe $C$ est appelée sous-classe de $C$.
+        \end{alertblock}}
+    
+    \onslide<4->{\begin{alertblock}{Proposition - Sous-espace vectoriel}
+            Pour toute classe $C$ dans $\Part(\EF)$, l'ensemble des sous-classes de $C$
+            est un s.e.v. de $\Part(\EF)$.
+        \end{alertblock}}
+    
+    \onslide<5->{\textbf{Démonstration}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Décomposition de $\EF$}
+    \begin{alertblock}{Proposition - Somme directe}
+        $\EF =  \tn{HK} \uplus \tn{Chartes} \uplus \tn{Bio} \uplus \tn{PCSI} \uplus \tn{MPSI}$
+        
+        Ainsi : $\Part(\EF) = \Part\tn{(HK)} \oplus \Part\tn{(Chartes)} \oplus \Part\tn{(Bio)} \oplus \Part\tn{(PCSI)} \oplus \Part\tn{(MPSI)}$ \\
+        où : $\Part\tn{(Bio)} = \Part\tn{(Grenouilles)} \oplus \Part\tn{(Poireaux)}$,\\
+        $\Part\tn{(PCSI)} = \Part\tn{(PCSI1)} \oplus \Part\tn{(PCSI2)}$ et\\
+        $\Part\tn{(MPSI)} = \Part\tn{(MPSI1)} \oplus \Part\tn{(MPSI2)} \oplus \Part\tn{(MPSI3)}$
+    \end{alertblock}
+\end{frame}
+
+\subsubsection{2.2. Base de l'espace des classes}
+
+\frame{\tableofcontents[currentsubsection]}
+
+\begin{frame}
+    \frametitle{Base de l'espace des classes}
+    \begin{alertblock}{Proposition - Dimension finie (Théorème de l'avantage concurrentiel)}
+        Pour toute filière $F$ de $\Fil$, l'espace $\Part(F)$ possède une base canonique, également appelée salle de base.
+    \end{alertblock}
+    
+    \onslide<2->{\textbf{Démonstration}}
+\end{frame}
+
+\subsubsection{2.3. Palindromes}
+
+\frame{\tableofcontents[currentsubsection]}
+
+\begin{frame}
+    \frametitle{Palindromes}
+    Pour démontrer la supériorité, il va falloir rajouter des outils
+    extérieurs. Ici nous allons parler de la fonction pal.  
+\end{frame}
+
+\begin{frame}
+    \frametitle{Définitions}
+    \begin{alertblock}{Définition - Lettre, mot, Mot, pal et palindrome}
+        Soit $n \geqslant 0$. On appelle lettre un élément de l'alphabet ou le caractère vide “\_”,
+        mot un $n$-uplet de lettres et Mots l'ensemble des mots.
+        On introduit la fonction :
+        $$\tn{pal} : \ \begin{aligned}
+                (\tn{Alphabet}\cup\{“\_”\})^n             & \rightarrow(\tn{Alphabet}\cup\{“\_”\})^n             \\
+                (\tn{lettre}_i)_{1\leqslant i\leqslant n} & \mapsto(\tn{lettre}_{n-i})_{1\leqslant i\leqslant n}
+            \end{aligned}$$
+        On appelle palindromes les mots invariants par pal.
+        
+        L'ensemble des palindromes est appelé Palindromes.
+        
+        Sur Mots sont définies deux lois internes :
+        \begin{itemize}
+            \item $(++)$ est la concaténation de deux mots.
+            \item $(+)$ est la superposition de deux mots lorsque deux caractères non vides ne se chevauchent pas.
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Définitions}
+    \textbf{Exemple} Palindromes\\
+    \vspace{15pt}
+    \onslide<2->{\textbf{Remarque} Lien entre Mots et Alphabet}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Symétries}
+    \begin{alertblock}{Proposition - Symétrie}
+        pal est une symétrie orthogonale pour le produit scalaire usuel.
+    \end{alertblock}
+    
+    \onslide<2->{\textbf{Démonstration}}
+    
+    \vspace{20pt}
+    
+    \onslide<3->{\begin{alertblock}{Proposition - Identité de Benichou-Battistelli}
+            Palindromes est une demi-droite vectorielle de Mots.
+        \end{alertblock}}
+    
+    \onslide<4->{\textbf{Démonstration}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Palindromes}
+    \begin{alertblock}{Définition - Décomposition en palindromes}
+        Tout mot appartenant à Mots se décompose en l'union d'un certain nombre de sous-mots.
+        Ces sous-mots peuvent soit appartenir à Palindromes (dans ce cas, c'est un sous-palindrome),
+        soit à Mots\textbackslash Palindromes = Mots$^-$ (dans ce cas-là, c'est un sous\tutu mot).\\
+        On appelle décomposition d'un mot $m$ un n-uplet $(m_i)_{1\leqslant i\leqslant n}$ de sous-mots de $m$
+        vérifiant : $\displaystyle\conc_{1\leqslant i\leqslant n}m_i=m$\\
+        On parle de \textbf{LA} décomposition de $m$ notée $\tn{dec}(m)$ pour désigner celle qui fait intervenir
+        le plus de lettres dans les palindromes. Si deux décompositions font intervenir autant de lettres,
+        on introduit un ordre lexicographique sur le rang (position de la première lettre du sous-mot dans le mot) des sous-palindromes.
+        La décomposition de mot est donc unique.
+        De la même manière, on appelle ced la fonction qui à partir d'une décomposition (donc n-uplet) renvoie la concaténation des sous-mots.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Palindromes}
+    \textbf{Exemple} Décompositions
+    \onslide<2->{\begin{alertblock}{Définition - pals, palt}
+            On introduit les fonctions :
+            $$\tn{palt} : \ \begin{aligned}
+                    \tn{Mots}^n                          & \rightarrow\tn{Mots}^n                          \\
+                    (\tn{m}_i)_{1\leqslant i\leqslant n} & \mapsto(\tn{m}_{n-i})_{1\leqslant i\leqslant n}
+                \end{aligned}$$
+            $$\tn{pals} : \ \begin{aligned}
+                    \tn{Mots}^n                          & \rightarrow\tn{Mots}^n                                \\
+                    (\tn{m}_i)_{1\leqslant i\leqslant n} & \mapsto(\tn{pal}(\tn{m}_i))_{1\leqslant i\leqslant n}
+                \end{aligned}$$
+            Alors : $$\tn{pal}=\tn{ced}\circ\tn{palt}\circ\tn{pals}\circ\tn{dec}$$
+        \end{alertblock}}
+    
+    \onslide<3->{\textbf{Remarque} Appellation et symétrie}
+    
+    \onslide<4->{\textbf{Exemple} Utilisation de pals et palt}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Palindromes}
+    \textbf{Analyse} Étude de la symétrie de pals
+    
+    \onslide<2->{\begin{alertblock}{Théorème - Théorème du Turc d'Aligot (HP)}
+            $\tn{ced}\circ\tn{pals}\circ\tn{dec}$ est une symétrie de direction $\tn{Mots}^-$ par rapport à Palindromes.
+        \end{alertblock}}
+\end{frame}
+
+\subsection{3. Démonstration de la suprématie des MP3}
+
+\frame{\tableofcontents[currentsubsection]}
+
+\begin{frame}
+    \frametitle{Démonstration de la suprématie des MP3}
+    \begin{block}{Heuristique - Utilité de la fonction palindrome}
+        Les deux premières démonstrations se concentrent sur des résultats sans trop de lien avec le 2.1.
+        Elles se concentreront sur l'utilisation de la fonction pal.
+        Nous allons ainsi démontrer la suprématie des MP3 par rapport aux autres filières puis utiliser la propriété de somme directe.
+    \end{block}
+    
+    \onslide<2->{\textbf{Attention} Ordre strict}
+\end{frame}
+
+\subsubsection{3.0. ECS}
+
+\frame{\tableofcontents[currentsubsection]}
+
+\begin{frame}
+    \frametitle{ECS}
+    \begin{alertblock}{Théorème - Sur les ECS}
+        Les ECS n'existent pas.
+    \end{alertblock}
+    
+    \onslide<2->{\textbf{Démonstration}}
+\end{frame}
+
+\subsubsection{3.1. HK}
+
+\frame{\tableofcontents[currentsubsection]}
+
+\begin{frame}
+    \frametitle{HK}
+    \begin{alertblock}{Théorème - Sur les HK}
+        Les HK sont vides, contrairement aux MPSI3 (ex : Adam $\in$ MPSI3) et donc MPSI3 > HK.
+    \end{alertblock}
+    
+    \onslide<2->{\textbf{Démonstration}}
+\end{frame}
+
+\subsubsection{3.2. Chartes}
+
+\frame{\tableofcontents[currentsubsection]}
+
+\begin{frame}
+    \frametitle{Chartes}
+    \begin{alertblock}{Théorème - Sur les Chartes}
+        Les Chartes sont seuls et flemmards.
+    \end{alertblock}
+    
+    \onslide<2->{\textbf{Démonstration}}
+    
+    \vspace{20pt}
+    
+    \onslide<3->{\begin{alertblock}{Corollaire - En termes de suprématie}
+            Chartes < MPSI3.
+        \end{alertblock}}
+    
+    \onslide<4->{\textbf{Démonstration}}
+\end{frame}
+
+\subsubsection{3.3. Bio}
+
+\frame{\tableofcontents[currentsubsection]}
+
+\begin{frame}
+    \frametitle{Grenouilles}
+    \begin{alertblock}{Théorème - Sur les Grenouilles}
+        La classe des Grenouilles est nulle, à l'inverse de la MPSI3. Il en découle la suprématie de la MPSI3 sur les Grenouilles.
+    \end{alertblock}
+    
+    \onslide<2->{\textbf{Démonstration}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Poireaux}
+    \begin{alertblock}{Théorème - Sur les Poireaux}
+        Les Poireaux sont détestés des gens, tandis que
+        les MPSI3, à l'image des trois terreurs de l'Ouest, sont incroyablement populaires
+        donc MPSI3 > Poireaux.
+    \end{alertblock}
+    
+    \onslide<2->{\textbf{Démonstration}}
+\end{frame}
+
+\subsubsection{3.4. PCSI}
+
+\frame{\tableofcontents[currentsubsection]}
+
+\begin{frame}
+    \frametitle{PCSI1}
+    \begin{alertblock}{Théorème - Sur les PCSI1}
+        Les PCSI1 sont solitaires : ils ne s'entraident pas.\\
+        Les MPSI3 unissant leurs forces et travaillant ensemble ont donc une cohésion de groupe plus forte que les PCSI1 et alors : MPSI3 > PCSI1
+    \end{alertblock}
+    
+    \onslide<2->{\textbf{Démonstration}}
+    
+    \onslide<3->{\textbf{Exercice} Démontrer que les PCSI1 sont des imbéciles heureux.}
+\end{frame}
+
+\begin{frame}
+    \frametitle{PCSI2}
+    \begin{alertblock}{Lemme - Lemme de Mallet}
+        \centering $1=2$.
+    \end{alertblock}
+    
+    \onslide<2->{\textbf{Démonstration}}
+    
+    \vspace{20pt}
+    
+    \onslide<3->{\begin{alertblock}{Corollaire - Sur les PCSI2}
+            MPSI3 > PCSI2.
+        \end{alertblock}}
+    
+    \onslide<4->{\textbf{Démonstration}}
+\end{frame}
+
+\subsubsection{3.5. MPSI$X$, $X\ne 3$}
+
+\frame{\tableofcontents[currentsubsection]}
+
+\begin{frame}
+    \frametitle{Norme}
+    \begin{alertblock}{Définition - Norme $\Vert\dashedph[x]\Vert_\tau$}
+        La norme $\Vert\dashedph[x]\Vert_\tau : \Part(\EF) \rightarrow \N$ associe à une classe le nombre de chapitres réalisés dans une matière précisée préalablement.
+    \end{alertblock}
+    
+    \onslide<2->{\textbf{Démonstration}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{MPSI1}
+    \begin{alertblock}{Théorème - Sur les MPSI1}
+        $\tn{MPSI1}=o(\tn{MPSI3})$, ce qui entraîne directement que MPSI3 > MPSI1.
+    \end{alertblock}
+    
+    \onslide<2->{\textbf{Démonstration}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{MPSI2}
+    \begin{alertblock}{Théorème - Sur les MPSI2}
+        Les MPSI3 écrasent les MPSI2, ce qui a pour conséquence immédiate que MPSI3 > MPSI2.
+    \end{alertblock}
+    
+    \onslide<2->{\textbf{Démonstration}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Méthode}
+    \begin{block}{Savoir faire - Méthodes pour prouver une suprématie}
+        Pour démontrer la suprématie d'une Filière par rapport à une autre, nous avons utilisé :
+        \begin{enumerate}
+            \item la fonction pal pour modifier la signification du nom d'une filière
+            \item la multiplication par des caractères (profiter de la malléabilité de $\Car$) pour altérer la forme d'une classe
+            \item le recours à des rôles plotistes (cf. GFO) et à des informateurs provenant des différentes classes (cf. MPSI2 et Léo)
+        \end{enumerate}
+        Tandis que les méthodes 1. et 3. sont plus des stratégies circonstancielles se basant sur des
+        coïncidences, la méthode 2., par l'utilisation des caractères, de par sa richesse quasiment infinie,
+        peut à peu près tout démontrer pourvu que l'on prenne le temps de s'y atteler et d'avoir un peu d'imagination.
+        Si vous ne savez pas où commencer un exercice car vous n'avez repéré aucun levier sur lequel faire travailler vos fonctions
+        de référence, penchez-vous vers les caractères !
+    \end{block}
+\end{frame}
+
+\subsubsection{3.6. Général}
+
+\frame{\tableofcontents[currentsubsection]}
+
+\begin{frame}
+    \frametitle{Généralisation}
+    \begin{alertblock}{Théorème - Théorème fondamental de Layton}
+        $\forall C \in \Part(\EF),\ C \leqslant \tn{MPSI3}$\\
+        Si $\proj_{\tn{MPSI3}}(C)=0$, alors $C < \tn{MPSI3}$.
+    \end{alertblock}
+    
+    \onslide<2->{\begin{block}{Heuristique - Démonstration}
+            L'idée va être que pour toute classe $C$ de $\Part(\EF)$, on peut “découper” la classe en des “morceaux” appartenant à chacune des filières.
+            Or, on peut utiliser tous les théorèmes qu'on a précédemment démontrés pour trouver pour chaque morceau une sous-classe de MPSI3 supérieure au morceau.
+            En recollant les morceaux supérieurs à chacun des morceaux de $C$, on obtient une sous-classe inférieure à MPSI3.
+        \end{block}}
+    
+    \onslide<3->{\textbf{Démonstration}}
+\end{frame}
+
+\section{$ $}
+
+\begin{frame}
+    \frametitle{Conclusion}
+    \onslide<1->{\textbf{Objectifs}\\
+        \textcolor{red}{$\Rightarrow$ Définir l'algèbre Fermatienne} \\
+        \textcolor{red}{$\Rightarrow$ Étudier les fonctions palindromiales} \\ 
+        \textcolor{red}{$\Rightarrow$ Appliquer la caractérisation pour démontrer la suprématie} \\ }
+    
+    \onslide<2->{\textbf{Pour le prochain cours}
+        \begin{itemize}
+            \item Exercice n\textdegree 777
+        \end{itemize}}
+\end{frame}
+
+\end{document}
+

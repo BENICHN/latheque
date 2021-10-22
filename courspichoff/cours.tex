@@ -1,0 +1,484 @@
+\documentclass[fleqn,a4paper]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+\usepackage{minitoc}
+\usepackage[french,boxruled,linesnumbered,fillcomment,lined]{algorithm2e}
+\usepackage{amsmath,amssymb,amsfonts,textcomp}
+\usepackage{dsfont}
+\usepackage{epic}
+\usepackage{fancyhdr}
+\usepackage{boites,boites_exemples}
+\usepackage{graphicx}
+\usepackage{makeidx}
+\usepackage{index}
+\usepackage{ulem}
+\usepackage{soul}
+\usepackage{manfnt}
+\usepackage{pifont}
+\usepackage[metapost]{mfpic} 
+\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage[final]{pdfpages}
+\usepackage{fourier}
+\usepackage[scaled=0.875]{helvet}
+\usepackage{courier}
+\usepackage{stmaryrd}
+\usepackage{environ}
+\usepackage{array, multirow, tabularx}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{listings}
+\usepackage{frcursive}
+\usepackage{youngtab}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage{tikz}
+\usetikzlibrary{trees, arrows}
+\usepackage[tikz]{bclogo}
+
+
+% Mode eleve/prof -------------------------------------------------------------
+
+
+\newcommand\eleve{}
+%\newcommand\eleve{\color{white}}
+
+
+% Pythontex -------------------------------------------------------------------
+
+
+% \usepackage[makestderr]{pythontex}
+% \restartpythontexsession{\thesection}
+% \newcommand{\pytex}{Python\TeX}
+
+
+% Mise en page ----------------------------------------------------------------
+
+
+\parindent=0pt
+
+\addtolength{\hoffset}{-1.3cm}
+\addtolength{\evensidemargin}{2.4cm}
+\addtolength{\oddsidemargin}{-1cm}
+\addtolength{\marginparwidth}{2.4cm}
+\addtolength{\marginparsep}{0cm} 
+\addtolength{\textwidth}{-1cm} 
+\addtolength{\headwidth}{6cm}
+\addtolength{\textheight}{3.5cm} 
+\addtolength{\headsep}{-0.5cm} 
+\addtolength{\topmargin}{-1.5cm}
+
+\hsize=170mm       \vsize=250mm
+\hoffset=-4mm      \voffset=-1mm
+\pretolerance=500  \tolerance=1000  \brokenpenalty=5000
+
+\overfullrule=0cm \emergencystretch=10pt
+
+\null
+\vskip 0.5cm
+
+\parindent=0mm
+\abovedisplayskip=6pt plus 2pt minus 4pt
+\abovedisplayshortskip=0pt plus 2pt
+\belowdisplayskip=6pt plus 2pt minus 4pt
+\belowdisplayshortskip=0pt plus 2pt
+
+\renewcommand\logowidth{10pt}
+
+
+% Style Fancy -----------------------------------------------------------------
+
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\cfoot{\bfseries AP\, \,  - \, Cours de maths MPSI (Fermat - 2020/2021) }
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.3pt}
+\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0cm}}
+
+
+% Couleurs --------------------------------------------------------------------
+
+
+\definecolor{myred}{rgb}{0.8,0,0}
+\definecolor{lightgray}{gray}{0.85}
+
+
+% Macros de mise en page ------------------------------------------------------
+
+
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\marge}[1]{\marginpar{\parbox[b]{\marginparwidth}{\textsl{\small{#1}}}}}
+\newcommand\tb[1]{\textit{#1}}
+
+
+\lstset{frame=tbR,
+basicstyle=\small,
+keywordstyle=\bf \color{black},
+commentstyle=\it \color[gray]{0.5},
+stringstyle=\color{red},
+showstringspaces=false,
+numbers=left,
+numberstyle=\tiny \bf \color{blue},
+numberfirstline=true,
+linewidth=11cm,xleftmargin=1cm,float=!h,language=Python}
+
+
+% Environnements --------------------------------------------------------------
+
+
+\newtheorem{Theo}{Théorème}
+\renewcommand{\theTheo}{}
+\NewEnviron{thm}[1]{
+  \begin{bclogo}[couleur=gray!10,ombre=true,epOmbre=0.10,logo=,barre=none]{\textbf{\normalsize Théorème - #1} }
+    \BODY
+  \end{bclogo}}
+ 
+\newtheorem{Propos}{Proposition}
+\renewcommand{\thePropos}{}
+\NewEnviron{prop}[1]{
+  \begin{bclogo}[couleur=gray!10,ombre=true,epOmbre=0.1,logo=,barre=none]{\textbf{\normalsize Proposition - #1} }
+    \BODY
+  \end{bclogo}}
+
+\NewEnviron{cor}[1]{
+  \zspace\begin{bclogo}[couleur=gray!10,ombre=true,epOmbre=0.1,logo=,barre=none]{\textbf{\normalsize Corollaire - #1} }
+    \BODY
+  \end{bclogo}} 
+
+\NewEnviron{lem}[1]{
+  \zspace\begin{bclogo}[ombre=true,epOmbre=0.1,logo=,barre=none]{\textbf{\normalsize Lemme - #1} }
+    \BODY
+  \end{bclogo}}
+
+
+\newtheorem{Defi}{Définition}
+\renewcommand{\theDefi}{}
+\NewEnviron{defn}[1]{
+  \begin{bclogo}[couleur=gray!05,logo=,barre=none,arrondi=0.2]{\textbf{\normalsize Définition - #1} }
+    \noindent\BODY
+  \end{bclogo}}
+ 
+\NewEnviron{rem}[1]{
+  \noindent {\bcstop}\textbf{ Remarque - #1} \\ \BODY}
+
+\NewEnviron{ex}[1]{
+  \noindent{\bcplume}\textbf{ Exemple - #1} \\
+  {\large \eleve \BODY}}
+ 
+\NewEnviron{contre}[1]{
+  \noindent{\bcbombe}\textbf{ Contre-exemple - #1} \ \\
+  {\large \eleve \BODY}} 
+
+\NewEnviron{python}[1]{
+  \noindent{\bcinfo}\textbf{ Informatique - #1} \ \\
+  {\small \BODY}} 
+ 
+\NewEnviron{app}[1]{
+  \noindent{\bccrayon}\textbf{ Application - #1} \ \\
+  { \eleve \BODY}}  
+ 
+\NewEnviron{truc}[1]{
+  \begin{bclogo}[logo=\bclampe,noborder=true]{\normalsize Truc \& Astuce pour le calcul - #1 }
+    \BODY
+  \end{bclogo}}
+ 
+\NewEnviron{sfaire}[1]{
+  \begin{bclogo}[logo=\bcoutil,noborder=true]{\normalsize Savoir faire - #1 }
+    \BODY
+  \end{bclogo}}
+\NewEnviron{att}[1]{
+  \begin{bclogo}[logo=\bcattention,barre=zigzag,noborder=true]{\normalsize Attention - #1 }
+    \BODY
+  \end{bclogo}}
+
+\NewEnviron{histoire}[1]{
+  \marge{\begin{bclogo}[logo=\bccalendrier,barre=none,arrondi=0.2]{\small Histoire - #1 }
+    \BODY
+  \end{bclogo}}}
+
+\NewEnviron{plusloin}[1]{
+  \marge{\begin{bclogo}[logo=\bcpanchant,barre=none]{\small Pour aller plus loin - #1 }
+    \BODY
+  \end{bclogo}}}
+ 
+\NewEnviron{voir}[1]{
+  \marge{\begin{bclogo}[logo=\bcrosevents,barre=none,noborder=true]{\small Représentation - #1 }
+    \BODY
+  \end{bclogo}}}
+
+\NewEnviron{savoir}{\noindent\hspace*{0,4cm}Savoir - \BODY  }
+
+\NewEnviron{cur}[1]{
+  \noindent{\bcquestion}\textbf{Curiosité-problématique - #1} \\
+  {\large \eleve \BODY}}
+
+\NewEnviron{ana}[1]{
+  \noindent{\bcloupe}\textbf{ Analyse - #1} \\
+  {\large\eleve \BODY}}
+
+\newtheorem{Demonstration}{Démonstration}
+\renewcommand{\theDemonstration}{}
+\NewEnviron{dem}{
+  \small\begin{Demonstration}
+    \begin{upshape}
+      \ \\\large\eleve \BODY\ \\ {\hspace*{0pt}\hfill$\square$}
+    \end{upshape}
+  \end{Demonstration}}
+    
+\NewEnviron{res}{
+  \begin{bclogo}[logo=\bcbook,barre=snake,tailleOndu=1.5,noborder=true]{\small Résumé -}
+    \small\itshape\BODY
+  \end{bclogo}}
+  
+\NewEnviron{heu}[1]{
+  \begin{bclogo}[logo=\bccle,epBarre=0.5,noborder=true]{\normalsize Heuristique - #1 }
+    \footnotesize\BODY
+  \end{bclogo}}
+
+\NewEnviron{exercice}{\underline{\textsf{Exercice}}\ \\ \sffamily \small\BODY}
+\NewEnviron{correction}{ \eleve \sffamily \small\footnotesize  \underline{Correction} \\ \BODY}
+ 
+\newcounter{numeroprob}
+\NewEnviron{probleme}[1]{\noindent\refstepcounter{numeroprob}
+\begin{bclogo}[logo=\bcquestion,noborder=true]{\textsf{Problème \arabic{numeroprob} - #1}}\BODY\end{bclogo}}
+   
+\NewEnviron{cit}[3]{
+  \vspace*{0.5cm}
+  \begin{flushright}
+    \textit{#1}\\
+    \textbf{#2}\ \underline{#3}\ {\BODY}\vspace{1cm}
+  \end{flushright}}
+
+\NewEnviron{cita}[3]{
+  {\center\textit{#1}}
+  \begin{flushright}
+    \textbf{#2}\ \underline{#3}\ {\BODY}
+  \end{flushright}}
+
+
+% Macros mathématiques --------------------------------------------------------
+   
+
+\newcommand{\Bigcupplus}{+ \hspace{-10pt}\Bigcup}
+\newcommand{\Bigcupplusdem}{+ \hspace{-9.2pt}\Bigcup}
+\newcommand{\cupplus}{\uplus}
+\newcommand{\Perp}{\perp\!\!\!\!\!\perp}
+\newcommand{\Reel}{\mathfrak{Re}}
+\newcommand{\Ima}{\mathfrak{Im}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\Mat}{\mathcal{M}}
+\newcommand{\re}{\textrm{Re }}
+\newcommand{\im}{\textrm{Im }}
+\newcommand{\Lin}{\mathcal{L}}
+\newcommand{\Rel}{\mathcal{R}}
+\newcommand{\Pro}{\mathcal{P}}
+\newcommand{\Proq}{\mathcal{Q}}
+\newcommand{\GLin}{\mathcal{GL}}
+\newcommand{\Ce}{\mathcal{C}}
+\newcommand{\Fon}{\mathcal{F}}
+\newcommand{\Card}{\textrm{Card }}
+\newcommand{\rg}{\textrm{rg }}
+\newcommand{\Vect}{\mathrm{vect}}
+\newcommand{\diag}{\textrm{diag} }
+\newcommand{\Coef}{\textrm{Coef}}
+\newcommand{\Tr}{\textrm{Tr} } 
+\newcommand{\tr}{\textrm{tr} } 
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Dom}{\mathcal{D}}
+\newcommand{\Unif}{\mathcal{U}}
+\newcommand{\Hyp}{\mathcal{H}}
+\newcommand{\Geo}{\mathcal{G}}
+\newcommand{\Ker}{\textrm{Ker }}
+\newcommand{\Imm}{\textrm{Im }}
+\newcommand{\rang}{\textrm{rang }}
+\newcommand{\engendre}{\mathrm{vect}}
+\newcommand{\m}{\mathcal{A}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Base}{\mathcal{B}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\BOP}{\mathbf{B}}
+\newcommand{\Var}{\mathbf{Var}}
+\newcommand{\Cov}{\mathbf{Cov}} 
+\newcommand{\Esp}{\mathbf{E}}
+\newcommand{\Prob}{\mathbf{P}}
+\newcommand{\prodscal}[2]{\langle #1 \, , \,  #2 \rangle}
+\newcommand{\prodscala}[2]{\langle #1 \, | \,  #2 \rangle}
+\newcommand{\oie}{[\!\![}
+\newcommand{\fie}{]\!\!]}
+\newcommand{\Int}{\displaystyle \int}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\Sum}{\displaystyle \sum}
+\newcommand{\summ}{\sum\limits}
+\newcommand{\Bigcup}{\displaystyle \bigcup}
+\newcommand{\Bigcap}{\displaystyle \bigcap}
+\newcommand{\Lim}{\displaystyle \lim}
+\newcommand{\limm}{\lim\limits}
+\newcommand{\Prod}{\displaystyle \prod}
+\newcommand{\Binom}{\displaystyle \binom}
+\newcommand{\card}{\textrm{card }}
+\newcommand{\nt}{ |\!|\!|}
+\newcommand{\sh}{\textrm{sh}}
+\newcommand{\ch}{\textrm{ch}}
+\newcommand{\Arctan}{\textrm{Arctan }}
+\newcommand{\transpose}[1]{{\vphantom{#1}}^{\mathit t}{#1}}
+\newcommand{\ligne}{\  \\ \ 
+ 
+ }
+\newcommand{\vx}{\mathbf{x}}
+\newcommand{\vy}{\mathbf{y}}
+\newcommand{\vz}{\mathbf{z}}
+\newcommand{\vu}{\mathbf{u}}
+\newcommand{\ve}{\mathbf{e}}
+\newcommand{\ptt}{\forall \textrm{ }}
+\newcommand{\exs}{\exists \textrm{ }}
+\newcommand{\tq}{\ | \ }
+\newcommand{\aspace}{\hspace*{0.5cm}}
+\newcommand{\bspace}{\hspace*{1cm}}
+\newcommand{\cspace}{\hspace*{1.5cm}}
+\newcommand{\zspace}{\hspace*{-0,6cm}}
+ 
+\newcommand{\yyspace}{\vspace*{-0,2cm}}
+\newcommand{\zzspace}{\vspace*{-0,6cm}}
+
+\newcommand{\notmargec}{\hspace{-0,6cm}}
+\newcommand{\notmargel}{\hspace{-5,5cm}}
+
+\def\op{{\star F}}
+\def\frac#1#2{{#1\over#2}}
+\def\text#1{\hbox{\rm #1}}
+\def\d{\,\hbox{\rm d}}
+\def\trait{\par\centerline{\hbox{\vrule height .4pt depth 0pt width 12cm}}}
+\def\ie{\mathrel{\hbox{\ineg 6}}} 
+\def\le{\mathrel{\hbox{\ineg 6}}} 
+\def\leq{\mathrel{\hbox{\ineg 6}}} 
+\def\se{\mathrel{\hbox{\ineg >}}} 
+\def\ge{\mathrel{\hbox{\ineg >}}} 
+\def\geq{\mathrel{\hbox{\ineg >}}} 
+\def\vide{\hbox{\vid ?}}
+\def\dim{{\rm dim}\,}
+\def\sev{{\rm sous-espace vectoriel}}
+\def\ker{{\rm Ker}\,}
+\def\Ker{{\rm Ker}\,}
+\def\re{{\rm Re}\,}
+\def\im{{\rm Im}\,}
+\def\gav{{\rm GA}(E)}
+\def\gle{{\rm GL}(E)}
+\def\mnpk{{\cal M}_{n,p}(K)}
+\def\mnk{{\cal M}_n(K)}
+\def\glnk{{\rm GL}_n(\K)}
+\def\det{{\rm det}\,}
+\def\card{{\rm Card}}
+\def\tr{{\rm Tr}\,}
+\def\e{{\rm e}}
+\def\i{{\rm i}}
+\def\ch{\mathop{\rm ch}\nolimits}
+\def\sh{\mathop{\rm sh}\nolimits}
+\def\th{\mathop{\rm th}\nolimits}
+\def\argch{\mathop{\rm arg\,ch}\nolimits}
+\def\argsh{\mathop{\rm arg\,sh}\nolimits}
+\def\argth{\mathop{\rm arg\,th}\nolimits}
+\def\arccos{\mathop{\rm arc\,cos}\nolimits}
+\def\arcsin{\mathop{\rm arc\,sin}\nolimits}
+\def\arctan{\mathop{\rm arc\,tan}\nolimits}
+\def\adh#1{\overline{\!#1}}
+\def\rond#1{\buildrel\;\circ\over #1}
+\def\cnp#1#2{{\displaystyle\Big({{\textstyle #1}\atop
+{\textstyle #2}}\Big)}}
+\def\hfl#1#2{\smash{\mathop{\hbox to 4mm{\rightarrowfill}}
+\limits^{#1}_{#2}}}
+\def\vect#1{\overrightarrow{#1}}
+\def\Frac#1#2{{\displaystyle#1\over\displaystyle#2}}
+\def\frac#1#2{{\scriptstyle#1\over\scriptstyle#2}}
+\def\Der#1#2{\Frac{\hbox{d}#1}{\hbox{d}#2}}
+\def\Derr#1#2{\Frac{\hbox{d}^2#1}{\hbox{d}#2^2}}
+\def\Dron#1#2{\Frac{\partial#1}{\partial#2}}
+\def\dron#1#2{\frac{\partial#1}{\partial#2}}
+\def\<<{\leavevmode\raise.3ex\hbox{$\scriptscriptstyle\langle\!\langle$}}
+\def\>>{\leavevmode\raise.3ex\hbox{$\scriptscriptstyle\rangle\!\rangle$}}
+\def\implique{\ \Longrightarrow\ }
+\def\vabs#1{\vert#1\vert}
+\def\norme#1{\Vert#1\Vert}
+\def\Norme#1{\vert\vert\vert#1\vert\vert\vert}
+\def\[{[\![}
+\def\]{]\!]}
+
+\def\up#1{\raise 1ex\hbox{\septtm#1}}
+\def\build#1#2{\mathrel{\mathop{\kern 0pt#1}\limits_{#2}}}
+\def\Build#1#2#3{\build{{#1}}{\scriptstyle{#2}\atop\scriptstyle{#3}}}
+\def\fleche#1#2{\build{\hbox to 9mm{\rightarrowfill}}{{#1}\rightarrow{#2}}}
+\def\Fleche#1#2#3{\build{\hbox to 9mm{\rightarrowfill}}
+{\scriptstyle{#1}\rightarrow{#2}\atop\scriptstyle{#3}}}
+\long\def\cadre#1#2{\vbox{\hrule\hbox{\vrule
+\vbox spread#1{\vfil\hbox spread#1{\hfil#2\hfil}\vfil}\vrule}\hrule}\par}
+
+\def\tp{\centerline{\bsl Travaux pratiques}\so}
+\def\tit#1{{\parindent=-2mm{\bf#1}\smallskip}}
+\long\def\TITRE#1{\bigskip\centerline{\Large#1}\bigskip}
+\long\def\TIT#1{\bigskip\centerline{\largeb#1}\bigskip}
+\long\def\Titre#1{\bigskip{\large#1}\bigskip}
+\long\def\titre#1{\medskip\centerline{\hfill{\bf #1}\hfill}
+\medskip}
+\long\def\tx#1#2{\hbox{\hbox to 94mm{\vtop{\hsize=90mm#1\vfill}\hfill}
+\hfill\hbox to 74mm{\vtop{\hsize=70mm#2\vfill}\hfill}}\filbreak}
+
+\def\bg{\bigskip}
+\def\md{\medskip}
+\def\cl{\centerline}
+\def\info{informatique}
+
+\makeindex
+
+
+% Réglages --------------------------------------------------------------------
+
+
+\mtcselectlanguage{francais}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+\setcounter{minitocdepth}{2}
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.\noindent}
+\renewcommand{\thesubsubsection}{\thesubsection \arabic{subsubsection}}
+
+
+% Titre -----------------------------------------------------------------------
+
+
+\renewcommand{\contentsname}{Table des matières}
+\author{Antoine PICHOFF}
+\title{\textbf{Cours de maths MPSI}\\
+\Large Lycée Fermat\\
+2020-2021}
+
+
+% Document --------------------------------------------------------------------
+
+
+\begin{document}
+\maketitle
+\part{Algèbre Fermatienne}
+\chapter{Suprématie plotiste}
+blabla
+\dominitoc
+\tableofcontents
+\end{document}

@@ -1,0 +1,329 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=1.8cm, left=1cm, bottom=1.8cm, right=1cm]{geometry}
+\usepackage{setspace}
+\usepackage{soul}
+\usepackage{ulem}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{upquote}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{makeidx}
+\usepackage{empheq}
+\usepackage{pgf,tikz}
+\usepackage{xargs}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage{hhline}
+\usepackage{gfsartemisia}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usetikzlibrary{arrows, arrows.meta, bending, calc, backgrounds, patterns}
+\usetikzlibrary{decorations.markings}
+\pagestyle{fancy}
+
+\definecolor{alizarin}{rgb}{0.905882353,0.298039216,0.235294118}
+\definecolor{nephritis}{rgb}{0.152941176,0.682352941,0.376470588}
+\definecolor{belizehole}{rgb}{0.160784314,0.501960784,0.725490196}
+\definecolor{peterriver}{rgb}{0.203921569,0.596078431,0.858823529}
+
+\definecolor{officeblueint}{rgb}{0.51372549,0.745098039,0.925490196}
+\definecolor{officeblueext}{rgb}{0,0.388235294,0.694117647}
+\definecolor{officegreenint}{rgb}{0.631372549,0.866666667,0.666666667}
+\definecolor{officegreenext}{rgb}{0.188235294,0.564705882,0.282352941}
+\definecolor{officeredint}{rgb}{1,0.568627451,0.596078431}
+\definecolor{officeredext}{rgb}{0.831372549,0.137254902,0.078431373}
+\definecolor{officeyellowint}{rgb}{0.97254902,0.858823529,0.560784314}
+\definecolor{officeyellowext}{rgb}{0.870588235,0.423529412,0}
+\definecolor{officepurpleint}{rgb}{0.831372549,0.57254902,0.847058824}
+\definecolor{officepurpleext}{rgb}{0.62745098,0.294117647,0.658823529}
+\definecolor{officegrayint}{rgb}{0.784313725,0.776470588,0.768627451}
+\definecolor{officegrayext}{rgb}{0.474509804,0.466666667,0.454901961}
+\definecolor{officeblackint}{rgb}{0.784313725,0.776470588,0.768627451}
+\definecolor{officeblackext}{rgb}{0.22745098,0.22745098,0.219607843}
+
+\newcommand\indep{\perp \!\!\! \perp}
+\newcommand\Esp[1]{\mathbb{E}(#1)}
+\newcommand\Prob[1]{\mathbb{P}(#1)}
+\newcommand\Ber[1]{\mathcal{B}(#1)}
+
+\renewcommand{\theenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\theenumii}{\textbf{\alph{enumii}.}}
+\renewcommand{\theenumiii}{\textbf{\roman{enumiii}.}}
+
+\renewcommand{\labelenumi}{\theenumi}
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\labelenumiii}{\theenumiii}
+
+\author{BENICHOU Nathan \and HARD Pierre}
+\title{DM13}
+
+\renewcommand{\footrulewidth}{0pt}
+\fancyhf{}
+\lhead{\textsc{\theauthor}}
+\rhead{\thetitle}
+
+\begin{document} %------------------------------------------------------------------------------------------------------------------------------------------------- DOC
+\onehalfspacing
+\section*{Exercice 1} %-------------------------------------------------------------------------------------------------------------------------------------------- EX1
+\noindent Soit $\alpha \ne 1$
+\begin{enumerate}
+    \item La série $\left(\displaystyle\sum_{1 \leqslant n}\frac{1}{n^\alpha}\right)$ converge ssi $\alpha>1$.
+\end{enumerate}  
+Quelque soit $\alpha \in \mathbb{R}$, la fonction $t \mapsto \dfrac{1}{t^\alpha}$ est monotone sur $]0,+\infty[$, donc pour $n \geqslant 1$,
+$\dfrac{1}{n^\alpha}$ est compris entre $\displaystyle\int_{n-1}^{n}\frac{dt}{t^\alpha}$ et $\displaystyle\int_{n}^{n+1}\frac{dt}{t^\alpha}$.
+\begin{enumerate}
+    \item[2.] Supposons que la série diverge, càd $\alpha < 1$. Soit $N \geqslant 1$. Par sommation de la relation précédente :
+    $$\sum_{1 \leqslant n \leqslant N}\frac{1}{n^\alpha}\text{ est compris entre }
+    \int_{0}^{N}\frac{dt}{t^\alpha} = \frac{N^{1-\alpha}}{1-\alpha}\text{ et }
+    \int_{1}^{N+1}\frac{dt}{t^\alpha} = \frac{(N+1)^{1-\alpha}-1}{1-\alpha} \sim \frac{N^{1-\alpha}}{1-\alpha}\text{ car }1-\alpha>0$$
+    Donc par encadrement : $\displaystyle\sum_{1 \leqslant n \leqslant N}\frac{1}{n^\alpha} \sim \dfrac{N^{1-\alpha}}{1-\alpha}$
+    \item[3.] Supposons que la série converge, càd $\alpha > 1$. Soit $N \geqslant 1$. Par sommation de la relation précédente :
+    $$\sum_{N \leqslant n}\frac{1}{n^\alpha}\text{ est compris entre }
+    \int_{N-1}^{+\infty}\frac{dt}{t^\alpha} = \frac{1}{(\alpha-1)N^{\alpha-1}}\text{ et }
+    \int_{1}^{N+1}\frac{dt}{t^\alpha} = \frac{1}{(\alpha-1)(N-1)^{\alpha-1}} \sim \frac{1}{(\alpha-1)N^{\alpha-1}}\text{ car }\alpha-1>0$$
+    Donc par encadrement : $\displaystyle\sum_{N \leqslant n}\frac{1}{n^\alpha} \sim \frac{1}{(\alpha-1)N^{\alpha-1}}$
+\end{enumerate}
+\section*{Exercice 2} %-------------------------------------------------------------------------------------------------------------------------------------------- EX2
+    \noindent La suite $(a_n)$ est positive et bornée : $0 \leqslant (a_n) \leqslant M$.
+    \begin{enumerate}
+        \item Pour $n \geqslant 1$, $n a_n \left(\dfrac{x}{X}\right)^{n-1} \leqslant M \times n \left(\dfrac{x}{X}\right)^{n-1} \longrightarrow 0$
+        par croissances comparées puisque $0 \leqslant \dfrac{x}{X} < 1$. \\
+        Donc en particulier la suite $\left(n a_n \left(\dfrac{x}{X}\right)^{n-1}\right)_{1 \leqslant n}$ est bornée :
+        Il existe $M_x \geqslant 0$ tq pour $n \geqslant 1$, $n a_n \left(\dfrac{x}{X}\right)^{n-1} \leqslant M_x$ donc $n a_n x^{n-1} \leqslant M_x X^{n-1}$
+        Ainsi, pour $N \geqslant 1$,
+        $$\sum_{1 \leqslant n \leqslant N}{n a_n x^{n-1}} \leqslant M_x\sum_{1 \leqslant n \leqslant N}{X^{n-1}} \longrightarrow M_x\dfrac{1}{1-X}$$
+        Donc $\displaystyle\left(\sum_{1 \leqslant n}{n a_n x^{n-1}}\right)$ est majorée, et croissante donc converge, càd que $B(x)$ est bien défini.
+        \item 
+        \begin{enumerate}
+            \item On reconnaît un petit Bernoulli :
+            $$A(x_2)-A(x_1) = \sum_{0 \leqslant n}{a_n(x_2^n-x_1^n)} = (x_2-x_1)\sum_{0 \leqslant n}{a_n\left(\sum_{0 \leqslant k \leqslant n-1}{x_1^k x_2^{n-1-k}}\right)}$$
+            \item $0 \leqslant x_1 < x_2$ donc, pour $0 \leqslant k \leqslant n-1$ :
+            $$x_1^{n-1} \leqslant x_1^k x_2^{n-1-k} \leqslant x_2^{n-1}$$
+            Donc, par sommation : $$nx_1^{n-1} \leqslant \sum_{0 \leqslant k \leqslant n-1}{x_1^k x_2^{n-1-k}} \leqslant nx_2^{n-1}$$
+            Ainsi, comme $(a_n)$ est positive : $$\sum_{0 \leqslant n}{a_n n x_1^{n-1}} \leqslant \sum_{0 \leqslant n}{a_n\left(\sum_{0 \leqslant k \leqslant n-1}{x_1^k x_2^{n-1-k}}\right)}
+            \leqslant \sum_{0 \leqslant n}{a_n n x_2^{n-1}}$$
+            Soit, puisque $x_2 - x_1 > 0$ : $$(x_2 - x_1)B(x_1) \leqslant A(x_2) - A(x_1) \leqslant (x_2 - x_1)B(x_2)$$
+            \item Soient $x_0,\, x \in [0,1[$.
+            \begin{itemize}
+                \item Si $x \geqslant x_0$, alors :
+                $(x - x_0)B(x_0) \leqslant A(x) - A(x_0) \leqslant (x - x_0)B(x)$
+                \item Si $x \leqslant x_0$, alors :
+                $(x_0 - x)B(x) \leqslant A(x_0) - A(x) \leqslant (x_0 - x)B(x_0)$ \\
+                Soit, en multipliant par $-1$ : $(x - x_0)B(x_0) \leqslant A(x) - A(x_0) \leqslant (x - x_0)B(x)$
+            \end{itemize}
+            Donc dans tous les cas, on a l'inégalité :
+            $$(x - x_0)B(x_0) \leqslant A(x) - A(x_0) \leqslant (x - x_0)B(x)$$
+            Prenons $x \in \left[0\, ,\, X_0 = \dfrac{x_0+1}{2}\right]$, alors :
+            $$\left\{\begin{aligned}
+                & (x-x_0)B(x_0) \underset{x \longrightarrow x_0}{\longrightarrow} 0 \\
+                & (x-x_0)B(x)\text{ est compris entre }0\text{ et }(x-x_0)B(X_0) \underset{x \longrightarrow x_0}{\longrightarrow} 0\text{, donc } (x-x_0)B(x) \underset{x \longrightarrow x_0}{\longrightarrow} 0
+            \end{aligned}\right.$$
+            Donc par encadrement,
+            $$A(x) - A(x_0) \underset{x \longrightarrow x_0}{\longrightarrow}0$$
+            càd $A$ est continue en $x_0$. Donc $A$ est continue sur $[0,1[$
+            \item Soient $x_0 \ne x \in [0,1[$.
+            $$(x-x_0)B(x_0) \leqslant A(x)-A(x_0)\leqslant(x-x_0)B(x)$$
+            Donc $\dfrac{A(x)-A(x_0)}{x-x_0}$ est compris entre $B(x_0)$ et $B(x)$. Utilisons le troisième tiret de la question (3.) pour dire que $B$ est continue en $x_0$,
+            ainsi par encadrement : $\dfrac{A(x)-A(x_0)}{x-x_0}\longrightarrow B(x_0)$. \\
+            Donc $A$ est dérivable sur $[0,1[$ et $A'=B$
+        \end{enumerate}
+        \item Il suffit de reproduire la même démarche qu'aux questions (1.) et (2.) en remplaçant $A$ par $A_h$ et $B$ par $A_{h+1}$ : \\
+        Pour $h \in \mathbb{N}$, on définit la fonction suivante croissante $[0,1[$ :
+        $$A_h : x \mapsto \sum_{h \leqslant n}{\dfrac{n!}{(n-h)!}a_nx^{n-h}}$$
+        \begin{itemize}
+            \item Soit $h \in \mathbb{N}$. Montrons comme en (1.) que $A_h$ est bien définie : soient $x \in [0,1[$ et $X = \dfrac{x+1}{2}$. Pour $n \geqslant 1$ :
+            $$0 \leqslant \dfrac{n!}{(n-h)!}a_n\left(\dfrac{x}{X}\right)^{n-h} \leqslant M \times \dfrac{n!}{(n-h)!}\left(\dfrac{x}{X}\right)^{n-h}$$
+            Et, par croissances comparées puisque $n \mapsto \dfrac{n!}{(n-h)!}$ est polynomiale de degré $h$ et que $0 \leqslant \dfrac{x}{X} < 1$ :
+            $$\dfrac{n!}{(n-h)!}\left(\dfrac{x}{X}\right)^{n-h} \longrightarrow 0
+            \text{ donc }\dfrac{n!}{(n-h)!}a_n\left(\dfrac{x}{X}\right)^{n-h} \longrightarrow 0$$
+            Donc il existe $M_x \geqslant 0$ tel que :
+            $$\dfrac{n!}{(n-h)!}a_nx^{n-h} \leqslant M_x X^{n-h}$$
+            Donc, pour $N \geqslant 1$ :
+            $$\sum_{h \leqslant n \leqslant N}{\dfrac{n!}{(n-h)!}a_nx^{n-h}} \leqslant M_x\sum_{h \leqslant n \leqslant N}{X^{n-h}} \underset{N \longrightarrow + \infty}{\longrightarrow}M_x\dfrac{1}{1-X}$$
+            Donc $\displaystyle\left(\sum_{h \leqslant n}{\dfrac{n!}{(n-h)!}a_nx^{n-h}}\right)$ est majorée, et croissante donc converge, càd que $A_h(x)$ est bien défini.
+    
+            \item Soit $h \in \mathbb{N}$. Démontrons, comme en (2.a) et (2.b) l'inégalité de contrôle de $A_h$ : Soient $0 \leqslant x_1 < x_2 < 1$, alors :
+            $$A_h(x_2)-A_h(x_1) = \sum_{h \leqslant n}{\dfrac{n!}{(n-h)!}a_n(x_2^{n-h}-x_1^{n-h})}
+            = (x_2-x_1)\sum_{h \leqslant n}{\dfrac{n!}{(n-h)!}a_n\sum_{0 \leqslant k \leqslant n-h-1}{x_1^kx_2^{n-h-1-k}}}$$
+            Comme $0 \leqslant x_1 < x_2$ :
+            $$x_1^{n-h-1} \leqslant x_1^kx_2^{n-h-1-k} \leqslant x_2^{n-h-1}\text{ donc }(n-h)x_1^{n-h-1} \leqslant \sum_{0 \leqslant k \leqslant n-h-1}{x_1^kx_2^{n-h-1-k}} \leqslant (n-h)x_2^{n-h-1}$$
+            Donc : 
+            $$\sum_{h+1 \leqslant n}{\dfrac{n!}{(n-h-1)!}a_nx_1^{n-h-1}} \leqslant \sum_{h \leqslant n}{\dfrac{n!}{(n-h)!}a_n\sum_{0 \leqslant k \leqslant n-h-1}{x_1^kx_2^{n-h-1-k}}} \leqslant \sum_{h+1 \leqslant n}{\dfrac{n!}{(n-h-1)!}a_nx_2^{n-h-1}}$$
+            Soit :
+            $$(x_2-x_1)A_{h+1}(x_1) \leqslant A_h(x_2) - A_h(x_1) \leqslant (x_2-x_1)A_{h+1}(x_2)$$
+    
+            \item Soit $h \in \mathbb{N}$. Montrons comme en (2.c.) que $A_h$ est continue sur $[0,1[$ : soient $x_0,\, x \in [0,1[$, on a :
+            $$(x-x_0)A_{h+1}(x_0) \leqslant A_h(x) - A_h(x_0) \leqslant (x-x_0)A_{h+1}(x)$$
+            Prenons $x \in \left[0\, ,\, X_0 = \dfrac{x_0+1}{2}\right]$, alors :
+            $$\left\{\begin{aligned}
+                & (x-x_0)A_{h+1}(x_0) \underset{x \longrightarrow x_0}{\longrightarrow} 0 \\
+                & (x-x_0)A_{h+1}(x)\text{ est compris entre }0\text{ et }(x-x_0)A_{h+1}(X_0) \underset{x \longrightarrow x_0}{\longrightarrow} 0\text{, donc } (x-x_0)A_{h+1}(x) \underset{x \longrightarrow x_0}{\longrightarrow} 0
+            \end{aligned}\right.$$
+            Donc par encadrement,
+            $$A_h(x) - A_h(x_0) \underset{x \longrightarrow x_0}{\longrightarrow}0$$
+            càd $A_h$ est continue en $x_0$. Donc $A_h$ est continue sur $[0,1[$
+    
+            \item Soit $h \in \mathbb{N}$. Démontrons que $A_h$ est dérivable sur $[0,1[$ : soient $x_0 \ne x \in [0,1[$, on a :
+            $$(x-x_0)A_{h+1}(x_0) \leqslant A_h(x) - A_h(x_0) \leqslant (x-x_0)A_{h+1}(x)$$
+            Donc $\dfrac{A_h(x) - A_h(x_0)}{x-x_0}$ est compris entre $A_{h+1}(x_0)$ et $A_{h+1}(x)$
+            Par continuité, $A_{h+1}(x) \underset{x \longrightarrow x_0}{\longrightarrow} A_{h+1}(x_0)$ donc, par encadrement :
+            $\dfrac{A_h(x) - A_h(x_0)}{x-x_0}  \underset{x \longrightarrow x_0}{\longrightarrow} A_{h+1}(x_0)$ \\
+            Ainsi $A_h$ est dérivable sur $[0,1[$ et $A_h'=A_{h+1}$
+        \end{itemize}
+        Par récurrence, $A = A_0$ est de classe $\mathcal{C}^\infty$ sur $[0,1[$ et pour $h \in \mathbb{N}$, $A^{(h)}=A_h$.
+        \item Posons pour $x\in [0,1[$ : $$A(x)=\sum_{0\leqslant n}{a_k x^k}\text{ \ \ \ \ \ \ \ \ \ \ \ \ \  }B(x)=\sum_{0\leqslant n}{b_k x^k}$$
+        Supposons que $A=B$ et qu'il existe $k$ tq $a_k\ne b_k$, alors on note $m = \min\{k\geqslant 0 | a_k\ne b_k\}$.
+        $$A^{(m)}(0)-B^{(m)}(0)=m!(a_m-b_m)\sum_{m < n}{\dfrac{n!}{(n-m)!}(a_n-b_n)0^{n-m}} = m!(a_m-b_m) \ne 0\text{ par supposition}$$
+        Or, par hypothèse : $A^{(m)}=B^{(m)}$ donc $A^{(m)}(0)-B^{(m)}(0) = m!(a_m-b_m) = 0$, c'est absurde donc $\forall k \geqslant 0,\ a_k=b_k$
+    \end{enumerate}
+    \section*{Exercice 3}
+    \noindent $a_n \sim b_n$ donc il existe $(g_n) \longrightarrow 1$ telle que $\forall n,\ b_n = g_na_n$
+    \begin{enumerate}
+        \item \begin{itemize}
+            \item Supposons que $\left(\displaystyle\sum a_n\right)$ converge vers S. Soit $\epsilon > 0$. Il existe un rang $p$ tel que :
+            $$\left\{\begin{aligned}
+                & \forall n \geqslant p,\ 1-\epsilon \leqslant g_n \leqslant 1 + \epsilon\\
+                & \forall N \geqslant p,\ S - \epsilon \leqslant \sum_{0 \leqslant n \leqslant N}a_n \leqslant S + \epsilon\text{ donc }
+                S' - \epsilon \leqslant \sum_{p \leqslant n \leqslant N}a_n \leqslant S' + \epsilon\text{ avec }S' = S - \sum_{0 \leqslant k < p}a_n
+            \end{aligned}\right.$$
+            Ainsi pour $N \geqslant p$ :
+            $$\sum_{p \leqslant n \leqslant N}b_n \leqslant (1+\epsilon)\sum_{p \leqslant n \leqslant N}a_n\leqslant(1+\epsilon)(S'+\epsilon)$$
+            Donc $\left(\displaystyle\sum_{p \leqslant n}b_n\right)$ est croissante et majorée donc converge. Donc $\left(\displaystyle\sum b_n\right)$ converge.
+            \item Par contraposée : supposons que $\left(\displaystyle\sum b_n\right)$ converge, alors comme $b_n \sim a_n$, $\left(\displaystyle\sum a_n\right)$ converge aussi. \\
+            Donc si $\left(\displaystyle\sum a_n\right)$ diverge, $\left(\displaystyle\sum b_n\right)$ diverge aussi.
+        \end{itemize}
+        \item \begin{itemize}
+            \item Soit $N \geqslant 0$. Si $\displaystyle\sum_{N \leqslant n}a_n = 0$, alors on a par positivité : $\forall n \geqslant N,\ a_n = 0$
+            donc $\displaystyle\sum_{N \leqslant n}b_n = \displaystyle\sum_{N \leqslant n}{g_n \times 0} = 0$.
+            \item Soit $\epsilon > 0$. Il existe un rang $p$ tel que : $\forall n \geqslant p,\ 1-\epsilon \leqslant g_n \leqslant 1 + \epsilon$. \\
+            Donc, pour $N \geqslant p$, $$(1-\epsilon)\sum_{N \leqslant n}a_n \leqslant \sum_{N \leqslant n}b_n \leqslant (1+\epsilon)\sum_{N \leqslant n}a_n
+            \text{ donc }1-\epsilon \leqslant \dfrac{\displaystyle\sum_{N \leqslant n}b_n}{\displaystyle\sum_{N \leqslant n}a_n} \leqslant 1+\epsilon\text{ en supposant }\sum_{N \leqslant n}a_n \ne 0$$
+            Donc $\dfrac{\displaystyle\sum_{N \leqslant n}b_n}{\displaystyle\sum_{N \leqslant n}a_n}\underset{\sum_{N \leqslant n}a_n\ne 0}{\longrightarrow}1$
+        \end{itemize}
+        Finalement, on a bien $\displaystyle\sum_{N \leqslant n}a_n \underset{N \rightarrow +\infty}{\sim}\displaystyle\sum_{N \leqslant n}b_n$
+        \item \begin{itemize}
+            \item Soit $N \geqslant 0$. Si $\displaystyle\sum_{0 \leqslant n \leqslant N}a_n = 0$, alors on a par positivité : $\forall 0 \leqslant n \leqslant N,\ a_n = 0$
+            donc $\displaystyle\sum_{0 \leqslant n \leqslant N}b_n = \displaystyle\sum_{0 \leqslant n \leqslant N}{g_n \times 0} = 0$.
+            \item Soit $\epsilon > 0$. Il existe un rang $p$ tel que : $\forall n \geqslant p,\ 1-\epsilon \leqslant g_n \leqslant 1 + \epsilon$. \\
+            Pour $N \geqslant p$ : $$\sum_{0 \leqslant n \leqslant N}b_n = B_0 + \sum_{p \leqslant n \leqslant N}b_n\text{ avec }B_0 = \sum_{0 \leqslant n < p}b_n$$
+            Donc : $$B_0 + (1-\epsilon)\sum_{p \leqslant n \leqslant N}a_n \leqslant \sum_{0 \leqslant n \leqslant N}b_n \leqslant B_0 + (1+\epsilon)\sum_{p \leqslant n \leqslant N}a_n$$
+            Soit : $$(1-\epsilon)\sum_{0 \leqslant n \leqslant N}a_n +  B_0 - (1-\epsilon)A_0 \leqslant \sum_{0 \leqslant n \leqslant N}b_n
+            \leqslant (1+\epsilon)\sum_{0 \leqslant n \leqslant N}a_n +  B_0 - (1+\epsilon)A_0\text{ avec }A_0=\sum_{0\leqslant n < p}a_n$$
+            Alors, en supposant $\displaystyle\sum_{0 \leqslant n \leqslant N}a_n \ne 0$ :
+            $$1-\epsilon + \dfrac{B_0 - (1-\epsilon)A_0}{\displaystyle\sum_{0 \leqslant n \leqslant N}a_n}\leqslant
+            \dfrac{\displaystyle\sum_{0 \leqslant n \leqslant N}b_n}{\displaystyle\sum_{0 \leqslant n \leqslant N}a_n} \leqslant
+            1+\epsilon + \dfrac{B_0 - (1+\epsilon)A_0}{\displaystyle\sum_{0 \leqslant n \leqslant N}a_n}$$
+            Or, $\left(\displaystyle\sum a_n\right)$ n'est pas majorée, donc il existe un rang $q \geqslant p$ tel que
+            $$\forall N \geqslant q,\ \left|\dfrac{B_0 - (1+\epsilon)A_0}{\displaystyle\sum_{0 \leqslant n \leqslant N}a_n}\right| \leqslant \epsilon$$
+            Alors pour $N \geqslant q$, $$1 - 2\epsilon \leqslant \dfrac{\displaystyle\sum_{0 \leqslant n \leqslant N}b_n}{\displaystyle\sum_{0 \leqslant n \leqslant N}a_n} \leqslant 1 + 2\epsilon$$
+            Donc $\dfrac{\displaystyle\sum_{0 \leqslant n \leqslant N}b_n}{\displaystyle\sum_{0 \leqslant n \leqslant N}a_n}\underset{\sum_{0 \leqslant n \leqslant N}a_n\ne 0}{\longrightarrow}1$
+        \end{itemize}
+        Finalement, on a bien $\displaystyle\sum_{0 \leqslant n \leqslant N}a_n \underset{N \rightarrow +\infty}{\sim}\displaystyle\sum_{0 \leqslant n \leqslant N}b_n$
+        \item $(u_n) \longrightarrow l > 0$ donc $\left(\displaystyle\sum u_n\right)$ diverge grossièrement. Ainsi :
+        $$\sum_{1 \leqslant k \leqslant n}u_k \sim \sum_{1 \leqslant k \leqslant n}l = n \times l\text{ , d'où : }\dfrac{1}{n}\sum_{1 \leqslant k \leqslant n}u_k \longrightarrow l$$
+    \end{enumerate}
+    \section*{Exercice 4}
+    \begin{enumerate}
+        \item Pour $t \in [0,1[$ : $$\Esp{t^X}=\sum_{0 \leqslant n}{t^n\Prob{X=n}}=\sum_{0 \leqslant n}{t^n p_n}=G_x(t)$$
+        \item Supposons que $X \indep Y$. Pour $t \in [0,1[$ : $$G_{X+Y}(t)=\Esp{t^{X+Y}}=\Esp{t^X t^Y}=\Esp{t^X} \Esp{t^Y}=G_X(t)G_Y(t)\text{ car }t^X \indep t^Y\text{ par coalition}$$
+        \item $$G_X(1)=\Esp{1^X}=\Esp{1}=1$$
+        D'après les résultats de l'exercice 2 :
+        $$G'_X(1)=\sum_{1 \leqslant n}{np_n \times 1^{n-1}}=\Esp{X}$$
+        \item Supposons $X \hookrightarrow \Ber{p}$, alors pour $t \in [0,1[$ : $$G_X(t)=\Esp{t^X}=pt^1 + (1-p)t^0=pt+1-p=1+p(t-1)$$
+        Soit $Y \hookrightarrow \Ber{n,p}$, alors $Y = \displaystyle\sum_{1 \leqslant k \leqslant n}{X_k}$ où $X_k \hookrightarrow \Ber{p}$, donc, pour $t \in [0,1[$ :
+        $$G_Y(t)=\prod_{1 \leqslant k \leqslant n}{G_{X_k}(t)}=\prod_{1 \leqslant k \leqslant n}{1+p(t-1)}=(1+p(t-1))^n$$
+        \item Pour $t \in [0,1[$ : $$G_S(t)=\sum_{0\leqslant n}{t^n\Prob{S=n}}$$
+        $$\Prob{S=n}=\sum_{0 \leqslant m}{\Prob{N=m}\mathbb{P}_{N=m}(S=m)}=\sum_{0 \leqslant m}{\Prob{N=m}\mathbb{P}\left(\sum_{1 \leqslant k \leqslant m}X_k = n\right)}$$
+        Il s'agit d'une série double de termes positifs qui converge puisqu'elle est égale à $G_S(t)$ et $t\in [0,1[$ donc on peut écrire :
+        \begin{align*}
+            G_S(t)=\sum_{\substack{0\leqslant n \\ 0 \leqslant m}}{t^n\Prob{N=m}\mathbb{P}\left(\sum_{1 \leqslant k \leqslant m}X_k = n\right)}
+            =\sum_{0 \leqslant m}{\Prob{N=m}\left(\sum_{0 \leqslant n}{t^n\mathbb{P}\left(\sum_{1 \leqslant k \leqslant m}X_k = n\right)}\right)}
+            =&\sum_{0 \leqslant m}{\Prob{N=m}G_{\sum_{1 \leqslant k \leqslant m}X_k}(t)} \\
+            =&\sum_{0 \leqslant m}{\Prob{N=m}\left(G_X(t)\right)^m}=G_N \circ G_X (t)
+        \end{align*}
+        D'où : $G_S = G_N \circ G_X$
+    \end{enumerate}
+    \section*{Problème}
+    \begin{enumerate}
+      \item \begin{enumerate}
+              \item On utilise la formule de Stirling : $$\Prob{R=2n}=\dfrac{4{2(n-1) \choose n-1}}{2n}\times\dfrac{1}{4^n}$$
+              $${2(n-1) \choose n-1} = \dfrac{(2(n-1))!}{((n-1)!)^2} \sim \dfrac{\sqrt{4\pi(n-1)}}{2\pi(n-1)}\times\left(\dfrac{2(n-1)}{n-1}\right)^{2(n-1)}
+              = \dfrac{1}{\sqrt{\pi(n-1)}}4^{n-1} \sim \dfrac{4^{n-1}}{\sqrt{\pi n}}$$
+              $$\Prob{R=2n}\sim\dfrac{4^n}{2n\sqrt{n\pi}}\times\dfrac{1}{4^n}=\dfrac{1}{2\sqrt{\pi} n^\frac{3}{2}}$$
+              On décompose $\Prob{R > i}$ :
+              $$\Prob{R > i} = \sum_{i < n}\Prob{R = n} = \sum_{\substack{i < n \\ n\text{ pair}}}\Prob{R = n} = \sum_{\frac{i}{2} < n}\Prob{R = 2n}$$
+              Il s'agit du reste de la série de terme général $u_n = \Prob{R=2n}$ dont on connaît un équivalent $v_n = \dfrac{1}{2\sqrt{\pi} n^\frac{3}{2}}$,
+              et $\left(\displaystyle\sum{v_n}\right)$ converge. Donc les restes des séries de $u_n$ et $v_n$ sont équivalents :
+              $$\Prob{R > i} \underset{i \rightarrow +\infty}{\sim} \dfrac{1}{2\sqrt{\pi}}\sum_{\frac{i}{2} < n}\dfrac{1}{n^\frac{3}{2}}
+              \sim \dfrac{1}{2\sqrt{\pi} \times \frac{1}{2}\sqrt{\frac{i}{2}}}=\dfrac{\sqrt{2}}{\sqrt{\pi i}}$$
+              \item On a équivalence entres les séries divergentes : $$\Esp{N_n}=1+\sum_{1 \leqslant i \leqslant n}\Prob{R > i}
+              \sim \dfrac{\sqrt{2}}{\sqrt{\pi}}\sum_{1 \leqslant i \leqslant n}\dfrac{1}{\sqrt{i}} \sim \dfrac{2\sqrt{2n}}{\sqrt{\pi}}$$
+      \end{enumerate}
+      \item \begin{enumerate}
+        \item\begin{enumerate}
+            \item Par décroissance de $(a_n)$ : $$a_nB_n=\sum_{0 \leqslant k \leqslant n}{b_ka_n} \leqslant \sum_{0 \leqslant k \leqslant n}{b_ka_{n-k}}=1\text{ donc }a_n \leqslant \dfrac{1}{B_n}$$
+            On utilise encore la décroissance de $(a_n)$, notamment $\forall 0 \leqslant k \leqslant m-n,\ m-k \geqslant n$ donc $a_{m-k} \leqslant a_n$ :
+            $$a_nB_{m-n}+a_0(B_m-B_{m-n}) = \sum_{0 \leqslant k \leqslant m-n}b_ka_n + \sum_{m-n < k \leqslant m}{b_ka_0} \geqslant \sum_{0 \leqslant k \leqslant m}b_ka_{m-k}=1$$
+            \item À partir d'un certain rang, on a $m_n > n$, alors d'après la question précédente :
+            $$a_n \leqslant \dfrac{1}{B_n}\text{ et }a_n \geqslant \dfrac{1-a_0(B_{m_n}-B_{m_n-n})}{B_{m_n-n}} \sim \dfrac{1}{B_{m_n-n}}\sim \dfrac{1}{B_n}$$
+            Donc, par encadrement : $a_n \sim \dfrac{1}{B_n}$
+            \item Avec $b_n \sim \dfrac{C}{n}$, cherchons une suite $(m_n)$ vérifiant les conditions de la question précédente. On suppose $n = o(m_n)$, donc :
+            $$\dfrac{m_n-n}{n}=\dfrac{m_n}{n}-1 \longrightarrow +\infty \text{ donc à partir d'un rang }r
+            \text{ on a : }\dfrac{m_n-n}{n}\geqslant 1\text{ càd }m_n -n \geqslant n$$
+            On choisit un $\epsilon > 0$. À partir d'un rang $p\geqslant r$, on a $\dfrac{C(1-\epsilon)}{n}\leqslant b_n\leqslant \dfrac{C(1+\epsilon)}{n}$.
+            À partir d'un rang $q \geqslant p$, on a en plus $m_n-n \geqslant p$ car $m_n-n \longrightarrow +\infty$. On se place après le rang $q$.
+            \begin{itemize}
+                \item Concernant la première condition : $$B_{m_n-n} = B_n + \sum_{n < k \leqslant m_n-n}b_k$$
+                Donc : $$B_{m_n-n} \sim B_n \Leftrightarrow \sum_{n < k \leqslant m_n-n}b_k = o(B_n) \Leftrightarrow \sum_{n < k \leqslant m_n-n}b_k = o(\ln n)
+                \text{ car }B_n \sim \sum_{1 \leqslant k \leqslant n}\dfrac{C}{k} \sim C\ln n$$
+                Or : $$\sum_{n < k \leqslant m_n-n}b_k \leqslant C(1+\epsilon)\sum_{n < k \leqslant m_n-n}\dfrac{1}{k} \leqslant \dfrac{m_n-2n}{n} \sim \dfrac{m_n}{n}$$
+                Donc par comparaison : $$\dfrac{m_n}{n} = o(\ln n) \Leftrightarrow m_n = o(n\ln n) \Rightarrow \sum_{n < k \leqslant m_n-n}b_k = o(\ln n) \Leftrightarrow B_{m_n-n} \sim B_n$$
+                Ainsi la première condition est assurée si $m_n=o(n \ln n)$
+                \item Concernant la seconde condition : $$B_{m_n}-B_{m_n-n} = \sum_{m_n-n < k \leqslant m_n}b_k
+                \leqslant C(1+\epsilon)\sum_{m_n-n < k \leqslant m_n}\dfrac{1}{k} \leqslant C(1+\epsilon)\dfrac{n}{m_n-n} = O\left( \dfrac{n}{m_n} \right)$$
+                Donc, par encadrement : $$\dfrac{n}{m_n} \longrightarrow 0 \Leftrightarrow n = o(m_n) \Rightarrow B_{m_n}-B_{m_n-n} \longrightarrow 0$$
+                La seconde condition est donc assurée par hypothèse puisqu'on a : $n = o(m_n)$
+            \end{itemize}
+            Finalement, il suffit que $n=o(m_n)$ et $m_n=o(n\ln n)$ pour vérifier toutes les conditions de la question précédente. Or une telle suite existe : $(m_n)=(n\ln(\ln n))_{n \geqslant 2}$
+            donc on peut dire que $a_n \sim \dfrac{1}{B_n}$ càd $a_n \sim \dfrac{1}{C\ln n}$
+        \end{enumerate}
+        \item Posons $(a_n)=(\Prob{R > 2n})_{n \geqslant 0}$ et $(b_n)=(\Prob{S_{2n}=0})_{n \geqslant 0}$. Ces suites sont positives et $(a_n)$ est bien décroissante.
+        Rappelons une formule donnée dans la question (D.2.a.) du DS9 : $$\Prob{S_{2n+1}=0} = 0\text{ et }\Prob{S_{2n}=0}=\left(\dfrac{{2n \choose n}}{4^n}\right)^2 \sim \left( \dfrac{\dfrac{4^n}{\sqrt{\pi n}}}{4^n} \right)^2=\dfrac{1}{\pi n}\text{ donc }b_n \sim \dfrac{1}{\pi n}$$
+        Soit $n \geqslant 0$ : $$\sum_{0\leqslant k \leqslant n}{a_kb_{n-k}} = \sum_{0\leqslant k \leqslant n}{b_ka_{n-k}}
+        = \sum_{0\leqslant k \leqslant n}{\Prob{S_{2k}=0}\Prob{R > 2n - 2k}} = \sum_{0\leqslant k \leqslant 2n}{\Prob{S_k=0}\Prob{R > 2n - k}}=1\text{ car }\Prob{S_{2k+1}=0}=0$$
+        Donc : $\displaystyle\sum_{0\leqslant k \leqslant n}{a_kb_{n-k}}=1$, ainsi d'après (a.) : $\Prob{R > 2n} \sim \dfrac{\pi}{\ln n}$, or $(\Prob{R > n})_{n\geqslant 0}$ est monotone,
+        donc, par encadrement, on a : $\Prob{R > n} \sim \dfrac{\pi}{\ln n}$. Alors :
+        $$\Esp{N_n}=1+\sum_{1 \leqslant k \leqslant n}\Prob{R > k}\sim \pi\sum_{2\leqslant k\leqslant n}\dfrac{1}{\ln k}
+        \text{ car }\dfrac{1}{n}=o\left(\dfrac{1}{\ln n}\right)\text{ et }\sum\dfrac{1}{n}\text{ diverge donc }\sum\dfrac{1}{\ln n}\text{ aussi}$$
+        Calculons un équivalent de $\displaystyle\sum\dfrac{1}{\ln k}$ : Soit $3 \leqslant k \leqslant n$. \\
+        Pour $t \in [k-1,k]$ :
+        $$\dfrac{1}{\ln (k-1)}\leqslant\dfrac{1}{\ln t}\leqslant\dfrac{1}{\ln k}$$
+        En intégrant entre $k-1$ et $k$ :
+        $$\dfrac{1}{\ln (k-1)} \leqslant \int_{k-1}^k{\dfrac{dt}{\ln t}} \leqslant \dfrac{1}{\ln k}$$
+        Donc par association d'inégalités :
+        $$\int_{k-1}^k{\dfrac{dt}{\ln t}}\leqslant \dfrac{1}{\ln k}\leqslant\int_{k}^{k+1}{\dfrac{dt}{\ln t}}$$
+        Et en sommant de 3 à $n$ :
+        $$\int_{2}^n{\dfrac{dt}{\ln t}}\leqslant \sum_{3\leqslant k\leqslant n}\dfrac{1}{\ln k}\leqslant\int_{3}^{n+1}{\dfrac{dt}{\ln t}}$$
+        Or :
+        $$\int_{2}^n{\dfrac{dt}{\ln t}} \sim \dfrac{n}{\ln n}\text{ et }\int_{3}^{n+1}{\dfrac{dt}{\ln t}}\sim \dfrac{n+1}{\ln (n+1)} + \int_{2}^3{\dfrac{dt}{\ln t}} \sim \dfrac{n}{\ln n}$$
+        Donc par encadrement : $\displaystyle\sum_{3\leqslant k\leqslant n}\dfrac{1}{\ln k} \sim \dfrac{n}{\ln n}$, donc : $\Esp{N_n} \sim \dfrac{\pi n}{\ln n}$
+      \end{enumerate}
+    \end{enumerate}
+\end{document}

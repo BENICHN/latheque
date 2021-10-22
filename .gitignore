@@ -1,0 +1,15 @@
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.idx
+*.ilg
+*.ind
+*.maf
+*.mtc*
+*.mp
+*.synctex*
+*.snm
+*.toc
+*.nav
+*.out

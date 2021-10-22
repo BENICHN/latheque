@@ -1,0 +1,147 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=1.8cm, left=1cm, bottom=1.8cm, right=1cm]{geometry}
+\usepackage{setspace}
+\usepackage{soul}
+\usepackage{ulem}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{upquote}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{makeidx}
+\usepackage{empheq}
+\usepackage{pgf,tikz}
+\usepackage{xargs}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage{hhline}
+% \usepackage{gfsartemisia}
+\usepackage{mlmodern}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usepackage{dashbox}
+\usetikzlibrary{arrows, arrows.meta, bending, calc, backgrounds, patterns}
+\usetikzlibrary{decorations.markings}
+\pagestyle{fancy}
+
+\definecolor{alizarin}{rgb}{0.905882353,0.298039216,0.235294118}
+\definecolor{nephritis}{rgb}{0.152941176,0.682352941,0.376470588}
+\definecolor{belizehole}{rgb}{0.160784314,0.501960784,0.725490196}
+\definecolor{peterriver}{rgb}{0.203921569,0.596078431,0.858823529}
+
+\definecolor{officeblueint}{rgb}{0.51372549,0.745098039,0.925490196}
+\definecolor{officeblueext}{rgb}{0,0.388235294,0.694117647}
+\definecolor{officegreenint}{rgb}{0.631372549,0.866666667,0.666666667}
+\definecolor{officegreenext}{rgb}{0.188235294,0.564705882,0.282352941}
+\definecolor{officeredint}{rgb}{1,0.568627451,0.596078431}
+\definecolor{officeredext}{rgb}{0.831372549,0.137254902,0.078431373}
+\definecolor{officeyellowint}{rgb}{0.97254902,0.858823529,0.560784314}
+\definecolor{officeyellowext}{rgb}{0.870588235,0.423529412,0}
+\definecolor{officepurpleint}{rgb}{0.831372549,0.57254902,0.847058824}
+\definecolor{officepurpleext}{rgb}{0.62745098,0.294117647,0.658823529}
+\definecolor{officegrayint}{rgb}{0.784313725,0.776470588,0.768627451}
+\definecolor{officegrayext}{rgb}{0.474509804,0.466666667,0.454901961}
+\definecolor{officeblackint}{rgb}{0.784313725,0.776470588,0.768627451}
+\definecolor{officeblackext}{rgb}{0.22745098,0.22745098,0.219607843}
+
+\newcommand\dashedph[1][H]{\setlength{\fboxsep}{0pt}\setlength{\dashlength}{2.2pt}\setlength{\dashdash}{1.1pt} \dbox{\phantom{#1}}}
+
+\newcommand\indep{\perp \!\!\! \perp}
+\newcommand\Esp[1]{\mathbb{E}(#1)}
+\newcommand\Prob[1]{\mathbb{P}(#1)}
+\newcommand\Ber[1]{\mathcal{B}(#1)}
+
+\renewcommand{\theenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\theenumii}{\textbf{\alph{enumii}.}}
+\renewcommand{\theenumiii}{\textbf{\roman{enumiii}.}}
+
+\renewcommand{\labelenumi}{\theenumi}
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\labelenumiii}{\theenumiii}
+
+\newtheorem*{thm}{Théorème}
+\newtheorem*{defn}{Définition}
+
+\author{BENICHOU Nathan}
+\title{Compacité et équivalence des normes en dimension finie}
+% 
+\renewcommand{\footrulewidth}{0pt}
+\fancyhf{}
+\lhead{\textsc{\theauthor}}
+\rhead{\thetitle}
+
+\begin{document} %------------------------------------------------------------------------------------------------------------------------------------------------- DOC
+\onehalfspacing
+\noindent $E$ désigne un $\mathbb{R}$-espace vectoriel de dimension finie $n$ et $\lVert\dashedph[x]\rVert$ une norme sur $E$.
+\begin{defn}
+    On dit qu'une partie $A$ de $E$ est compacte lorsque, de toute suite d'éléments de $A$ on peut extraire une sous-suite convergente dans $A$.
+\end{defn}
+\begin{thm}
+    Toute partie fermée et bornée $A$ de $E$ est compacte.
+\end{thm}
+\begin{proof} Soit $A \subset E$ une partie fermée et bornée de $E$.
+    \begin{itemize}
+        \item Considérons d'abord la dimension 1 : $E=\text{vect}(e)$ avec $\lVert e\rVert=1$. \\
+        Soit une suite $(\lambda_je)_{j\geqslant 0} \in A^\mathbb{N}$, alors la suite $(\lVert\lambda_je\rVert)_{j\geqslant 0} = (|\lambda_j|)_{j\geqslant 0}$ est bornée, donc par
+        le théorème de Bolzano-Wierstrass, il existe une extraction $\varphi \!\nearrow\!\!\nearrow$ telle que $(|\lambda_{\varphi(j)}|)_{j\geqslant 0} \longrightarrow \lambda$.
+        Puis :
+        \begin{itemize}
+            \item si $(\lambda_{\varphi(j)})_{j\geqslant 0}$ est positive à partir d'un certain rang, alors $(\lambda_{\varphi(j)})_{j\geqslant 0} \longrightarrow l$ avec $l = \lambda$
+            \item si $(\lambda_{\varphi(j)})_{j\geqslant 0}$ est négative à partir d'un certain rang, alors $(\lambda_{\varphi(j)})_{j\geqslant 0} \longrightarrow l$ avec $l = -\lambda$
+            \item sinon, on construit $\psi \!\nearrow\!\!\nearrow$ telle que $(\lambda_{\varphi\circ\psi(j)})_{j\geqslant 0}$ soit positive, ainsi :
+            $(\lambda_{\varphi\circ\psi(j)})_{j\geqslant 0}\longrightarrow l$ avec $l = \lambda$
+        \end{itemize}
+        Dans tous les cas, on a une extraction $\theta\!\nearrow\!\!\nearrow$ telle que $(\lambda_{\theta(j)})_{j\geqslant 0}$ converge vers $l$. \\
+        Or, $(\lVert\lambda_{\theta(j)}e - l e\rVert)_{j\geqslant 0}=(|\lambda_{\theta(j)} - l|)_{j\geqslant 0} \longrightarrow 0$, d'où $(\lambda_{\theta(j)}e)_{j\geqslant 0} \longrightarrow le$.
+        Comme $A$ est fermée, on a aussi $le \in A$.
+        \item En dimension $n$, on a $E = \text{vect}(e_i)_{1\leqslant i\leqslant n}$, avec $\forall i, \lVert e_i\rVert=1$. \\
+        Soit une suite $(x_j)_{j\geqslant 0}=\left(\displaystyle\sum_{1\leqslant i\leqslant n}\lambda_{i,j}e_i\right)_{j\geqslant 0}\in A^\mathbb{N}$.
+        Grâce au cas de la dimension 1 démontrée juste avant, on construit dans l'ordre, pour $1\leqslant i\leqslant n$,
+        l'extraction $\varphi_i$ telle que $(\lambda_{i,\varphi_1\circ\dots\circ\varphi_i(j)}e_i)_{j\geqslant 0} \longrightarrow l_ie_i$. Ainsi, avec $\varphi=\varphi_1\circ\dots\circ\varphi_n$, on a
+        $\forall 1\leqslant i\leqslant n, (\lambda_{i,\varphi(j)}e_i)_{j\geqslant 0} \longrightarrow l_ie_i$.
+        Puis, on note $x=\displaystyle\sum_{1\leqslant i\leqslant n}l_ie_i$, on a : $\forall j\geqslant 0,\ 
+        \lVert x_{\varphi(j)}-x\rVert=\left\lVert\displaystyle\sum_{1\leqslant i\leqslant n}(\lambda_{i,\varphi(j)}-l_i)e_i\right\rVert\leqslant \displaystyle\sum_{1\leqslant i\leqslant n}|\lambda_{i,\varphi(j)}-l_i|\underset{j\rightarrow +\infty}{\longrightarrow} 0.$
+        Soit encore : $(x_{\varphi(j)})_{j\geqslant 0} \longrightarrow x$.
+        Comme $A$ est fermée, on a aussi $x\in A$. Donc $A$ est compacte.
+    \end{itemize}
+\end{proof}
+\begin{thm}
+    Toutes les normes de $E$ sont équivalentes.
+\end{thm}
+\begin{proof}
+    Montrons que $\lVert\dashedph[x]\rVert$ est équivalente à $\lVert\dashedph[x]\rVert_1$, puis comme l'équivalence des normes est une relation d'équivalence,
+    on pourra généraliser à toutes les normes.
+    \begin{itemize}
+        \item Soit $x=\displaystyle\sum_{1\leqslant i\leqslant n}\lambda_ie_i \in E$. $\lVert x \rVert = \left\lVert \displaystyle\sum_{1\leqslant i\leqslant n}\lambda_ie_i \right\rVert
+        \leqslant \displaystyle\sum_{1\leqslant i\leqslant n}\lVert\lambda_ie_i\rVert=\displaystyle\sum_{1\leqslant i\leqslant n}|\lambda_i|=\lVert x \rVert_1$. On a alors la première inégalité :
+        $\lVert x\rVert \leqslant \lVert x\rVert_1$.
+        \item Considérons la sphère unité de la norme 1 : $S_1=\{x\in E \,|\, \lVert x\rVert_1 = 1\}$ et notons $m=\underset{x\in S_1}{\text{inf}}\,\lVert x \rVert$. Il faut alors montrer que $m > 0$.
+        Comme $m$ est une borne inférieure, il existe une suite $(x_k)_{k\geqslant 0}\in S_1^\mathbb{N}$ telle que $\lVert x_k \rVert \longrightarrow m$.
+        La sphère $S_1$ est fermée et bornée pour $\lVert\dashedph[x]\rVert_1$ donc par le théorème précédent $S_1$ est compacte pour $\lVert\dashedph[x]\rVert_1$.
+        Ainsi il existe une extraction $\varphi \!\nearrow\!\!\nearrow$ telle que $(x_{\varphi(k)})_{k\geqslant 0} \underset{\lVert\dashedph[x]\rVert_1}{\longrightarrow} x \in S_1$.
+        Comme $0\notin S_1$, on a $x\ne 0$. Montrons alors que $\lVert x \rVert = m$. Pour $k\geqslant 0$, grâce à la première inégalité, on a :
+        $\lVert x_{\varphi(k)} - x \rVert \leqslant \lVert x_{\varphi(k)} - x \rVert_1 \longrightarrow 0$, or $\lVert x_{\varphi(k)}\rVert-\lVert x\rVert \leqslant \lVert x_{\varphi(k)} - x \rVert$
+        donc $\lVert x_{\varphi(k)}\rVert-\lVert x\rVert \longrightarrow 0$ soit $\lVert x_{\varphi(k)}\rVert \longrightarrow \lVert x\rVert$. Alors par unicité de la limite, on a : $\lVert x\rVert = m$.
+        De plus, $x\ne 0$ donc $m>0$.\\
+        Ainsi, pour tout $x\in E$, on note $y=\dfrac{x}{\lVert x\rVert_1}$, alors $y\in S_1$ donc $\lVert y\rVert \geqslant m$, donc $\lVert x\rVert\geqslant m\lVert x\rVert_1$ soit $\lVert x\rVert_1 \leqslant \dfrac{\lVert x\rVert}{m}$
+        car $m>0$.
+    \end{itemize}
+    Finalement, $\forall x\in E, \lVert x\rVert \leqslant \lVert x\rVert_1 \leqslant \dfrac{\lVert x\rVert}{m}$ donc les normes $\lVert\dashedph[x]\rVert$ et $\lVert\dashedph[x]\rVert_1$ sont équivalentes.
+\end{proof}
+\end{document}
