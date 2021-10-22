@@ -75,6 +75,7 @@ $$f_n:\begin{aligned}
 \begin{proof}
     Soit $\epsilon>0$. Par continuité uniforme, il existe $\delta>0$ tel que : $$\forall x,y\in f(D), \abs{x-y}\leqslant\delta\Rightarrow\abs{g(x)-g(y)}\leqslant\epsilon$$
     Par convergence uniforme, il existe un rang $N\geqslant 0$ à partir duquel on a, pour $x\in D$ : $$\abs{f_n(x)-f(x)}\leqslant\delta$$
-    Alors : $$\abs{g\circ f_n(x)-g\circ f(x)}\leqslant\epsilon$$
+    Alors en combinant les deux inégalités : $$\abs{g\circ f_n(x)-g\circ f(x)}\leqslant\epsilon$$
+    D'où $(g\circ f_n)$ converge uniformément vers $g\circ f$ sur $D$.
 \end{proof}
 \end{document}
