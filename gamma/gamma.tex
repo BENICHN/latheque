@@ -87,7 +87,7 @@ $$f_n:\begin{aligned}
 \end{thm}
 \begin{proof}
     Commençons par montrer que $f$ est KH-intégrable sur $[a,b]$. Soit $\epsilon>0$. Par converge uniforme, il existe un rang $N\geqslant 0$ tel que :
-    $$\forall x\in[a,b],\ \abs{f_N(x)-f(x)}\leqslant\epsilon'\text{ \ \ \ \ \ \ \ \ soit : \ \ \ \ \ \ \ \ }f_N(x)-\epsilon'\leqslant f(x)\leqslant f_N(x)+\epsilon'\text{ \ \ \ \ \ \ \ \ avec }\epsilon'=\dfrac{\epsilon}{2(b-a)}>0$$
+    $$\forall x\in[a,b],\ \abs{f_N(x)-f(x)}\leqslant\epsilon'\text{ \ \ \ \ \ \ \ \ soit : \ \ \ \ \ \ \ \ }f_N(x)-\epsilon'\leqslant f(x)\leqslant f_N(x)+\epsilon'\text{ \ \ \ \ \ \ \ \ avec : }\epsilon'=\dfrac{\epsilon}{2(b-a)}>0$$
     Or : $$\int_a^b(f_n+\epsilon')-\int_a^b(f_n-\epsilon')=\int_a^b(2\epsilon')=2(b-a)\epsilon'=\epsilon$$
     Donc, par encadrement, $f$ est KH-intégrable sur $[a,b]$. De plus, pour $n\geqslant 0$ :
     $$\underset{x\in[a,b]}{\sup}\abs{F_n(x)-F(x)}=\underset{x\in[a,b]}{\sup}\abs{\int_a^x(f_n-f)}\leqslant\underset{x\in[a,b]}{\sup}\int_a^x\abs{f_n-f}=\int_a^b\abs{f_n-f}\leqslant(b-a)\underset{t\in[a,b]}{\sup}\abs{f_n(t)-f(t)}\underset{n\rightarrow+\infty}{\longrightarrow} 0$$
@@ -110,7 +110,7 @@ $$f_n:\begin{aligned}
 \begin{proof}
     Supposons que $u_n=O(v_n)$, càd $u_n=\lambda_nv_n$ avec $\lambda_n\longrightarrow\lambda\in\R$, et que $\displaystyle\sum \abs{v_n}$ converge.\\
     Soit $\epsilon>0$. Compte tenu des hypothèses, il existe un rang $N\geqslant 0$ à partir duquel :
-    $$\displaystyle\sum_{n\leqslant k<+\infty} \abs{v_k}\leqslant\epsilon'\text{\ \ \ \ \ \ \ et : \ \ \ \ \ \ \ }\abs{\lambda_n-\lambda}\leqslant\epsilon\text{\ \ \ \ \ \ \ avec : \ \ \ \ \ \ \ }\epsilon'=\dfrac{\epsilon}{\abs{\lambda}+\epsilon}>0$$
+    $$\displaystyle\sum_{n\leqslant k<+\infty} \abs{v_k}\leqslant\epsilon'\text{\ \ \ \ \ \ \ et : \ \ \ \ \ \ \ }\abs{\lambda_n-\lambda}\leqslant\epsilon\text{\ \ \ \ \ \ \ avec : }\epsilon'=\dfrac{\epsilon}{\abs{\lambda}+\epsilon}>0$$
     On applique l'inégalité triangulaire : $$\abs{\lambda_n}-\abs{\lambda}\leqslant\abs{\lambda_n-\lambda}\leqslant\epsilon\text{\ \ \ \ \ \ \ d'où : \ \ \ \ \ \ \ }\abs{\lambda_n}\leqslant\abs{\lambda}+\epsilon$$
     Ainsi : $$\displaystyle\sum_{n\leqslant k<+\infty} \abs{u_k}=\displaystyle\sum_{n\leqslant k<+\infty} \abs{\lambda_k}\abs{v_k}\leqslant(\abs{\lambda}+\epsilon)\displaystyle\sum_{n\leqslant k<+\infty} \abs{v_k}\leqslant(\abs{\lambda}+\epsilon)\epsilon'=\epsilon$$
     La série $\displaystyle\sum \abs{u_n}$ vérifie donc aussi le critère de Cauchy donc converge aussi.
