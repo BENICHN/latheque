@@ -27,7 +27,7 @@ $$f_n:\begin{aligned}
         &\alignsymbols{\underset{n\rightarrow +\infty}{=}} \displaystyle\sum_{1\leqslant k<n}\left(x\dfrac{1}{k}-\dfrac{x}{k}+O\left(\dfrac{1}{n^2}\right)\right)+o(1)
         \alignsymbols{\underset{n\rightarrow +\infty}{=}} \displaystyle\sum_{1\leqslant k<n}O\left(\dfrac{1}{n^2}\right)+o(1)
     \end{align*}
-    On constate que $(\ln f_n)$ converge simplement, donc $(f_n)$ converge simplement vers une fonction $f:\R_+\longmapsto\R_+^*$.
+    On constate grâce au lemme 3 que $(\ln f_n)$ converge simplement, donc $(f_n)$ converge simplement vers $f:\R_+\longmapsto\R_+^*$.
     \item Soient $n\geqslant 1$ et $x\geqslant 0$,
     \begin{align*}
         f_n(x+1)&=\dfrac{n^{x+1}n!}{\displaystyle\prod_{1\leqslant k\leqslant n}\left(x+1+k\right)}\\
@@ -42,7 +42,7 @@ $$f_n:\begin{aligned}
     % Par un calcul similaire à celui de (1.), on a : $$g_n(x)=\displaystyle\sum_{1\leqslant k<n}\left(\ln\left(1+\dfrac{1}{k}\right)-\dfrac{1}{x+k}\right)-\dfrac{1}{x+n}\underset{n\rightarrow +\infty}{=}
     % \displaystyle\sum_{1\leqslant k<n}\left(\dfrac{1}{k}-\dfrac{1}{x+k}+O\left(\dfrac{1}{n^2}\right)\right)+o(1)\underset{n\rightarrow +\infty}{=}\displaystyle\sum_{1\leqslant k<n}O\left(\dfrac{1}{n^2}\right)+o(1)$$
     % Donc $(g_n)$ converge simplement vers une fonction $g:\R_+\longmapsto\R$.
-    Comme $\dfrac{1}{(x+n)^2}\underset{n\rightarrow +\infty}{=}O\left(\dfrac{1}{n^2}\right)$,
+    Comme $\dfrac{1}{(x+n)^2}\underset{n\rightarrow +\infty}{=}O\left(\dfrac{1}{n^2}\right)$, d'après le lemme 3
     la suite $(g_n')$ converge simplement vers une fonction $h:\R_+\longmapsto\R$. \\Appliquons maintenant le lemme 1 sur $g_n'$ :
     $$g_{n+1}'(x)-g_n'(x)=\dfrac{1}{(x+n+1)^2}$$
     On constate que $g_{n+1}'-g_n'$ est décroissante et positive sur $\R_+$, on conclut que $(g_n')$ converge uniformément vers $h$ sur $\R_+$. \\
@@ -86,9 +86,9 @@ $$f_n:\begin{aligned}
     la suite $(F_n)$ converge uniformément vers $F$.
 \end{thm}
 \begin{proof}
-    Commençons par montrer que $f$ est KH-intégrable sur $[a,b]$. Soit $\epsilon>0$. Par converge uniforme, il existe un rang $N\geqslant 0$ tel que, avec $\epsilon'>0$ défini plus tard
-    : $$\forall x\in[a,b],\ \abs{f_N(x)-f(x)}\leqslant\epsilon'\text{ \ \ \ \ \ \ \ \ soit : \ \ \ \ \ \ \ \ }f_N(x)-\epsilon'\leqslant f(x)\leqslant f_N(x)+\epsilon'$$
-    Or : $$\int_a^b(f_n+\epsilon')-\int_a^b(f_n-\epsilon')=\int_a^b(2\epsilon')=2(b-a)\epsilon'=\epsilon\text{\ \ \ \ \ \ \ avec }\epsilon'=\dfrac{\epsilon}{2(b-a)}$$
+    Commençons par montrer que $f$ est KH-intégrable sur $[a,b]$. Soit $\epsilon>0$. Par converge uniforme, il existe un rang $N\geqslant 0$ tel que :
+    $$\forall x\in[a,b],\ \abs{f_N(x)-f(x)}\leqslant\epsilon'\text{ \ \ \ \ \ \ \ \ soit : \ \ \ \ \ \ \ \ }f_N(x)-\epsilon'\leqslant f(x)\leqslant f_N(x)+\epsilon'\text{ \ \ \ \ \ \ \ \ avec }\epsilon'=\dfrac{\epsilon}{2(b-a)}>0$$
+    Or : $$\int_a^b(f_n+\epsilon')-\int_a^b(f_n-\epsilon')=\int_a^b(2\epsilon')=2(b-a)\epsilon'=\epsilon$$
     Donc, par encadrement, $f$ est KH-intégrable sur $[a,b]$. De plus, pour $n\geqslant 0$ :
     $$\underset{x\in[a,b]}{\sup}\abs{F_n(x)-F(x)}=\underset{x\in[a,b]}{\sup}\abs{\int_a^x(f_n-f)}\leqslant\underset{x\in[a,b]}{\sup}\int_a^x\abs{f_n-f}=\int_a^b\abs{f_n-f}\leqslant(b-a)\underset{t\in[a,b]}{\sup}\abs{f_n(t)-f(t)}\underset{n\rightarrow+\infty}{\longrightarrow} 0$$
     Ainsi $(F_n)$ converge uniformément vers $F$.
@@ -102,5 +102,17 @@ $$f_n:\begin{aligned}
     $g$ est KH-intégrable sur $[a,b]$ et, comme, pour $x\in[a,b]$ : $$f_n(x)=f_n(a)+\int_a^xf_n'$$
     on a que $(f_n)$ converge uniformément vers : $$\fun{f}{[a,b]}{\R}{x}{\underset{n\longrightarrow+\infty}{\lim}f_n(a)+\int_a^xg}$$
     On remarque alors que $f$ est dérivable sur $[a,b]$ et que $f'=g$.
+\end{proof}
+\begin{lem}
+    Soient deux suites réelles $(u_n)$ et $(v_n)$. Si $u_n=O(v_n)$ et $\displaystyle\sum \abs{v_n}$ converge,
+    alors $\displaystyle\sum \abs{u_n}$ converge aussi.
+\end{lem}
+\begin{proof}
+    Supposons que $u_n=O(v_n)$, càd $u_n=\lambda_nv_n$ avec $\lambda_n\longrightarrow\lambda\in\R$, et que $\displaystyle\sum \abs{v_n}$ converge.\\
+    Soit $\epsilon>0$. Compte tenu des hypothèses, il existe un rang $N\geqslant 0$ à partir duquel :
+    $$\displaystyle\sum_{n\leqslant k<+\infty} \abs{v_k}\leqslant\epsilon'\text{\ \ \ \ \ \ \ et : \ \ \ \ \ \ \ }\abs{\lambda_n-\lambda}\leqslant\epsilon\text{\ \ \ \ \ \ \ avec : \ \ \ \ \ \ \ }\epsilon'=\dfrac{\epsilon}{\abs{\lambda}+\epsilon}>0$$
+    On applique l'inégalité triangulaire : $$\abs{\lambda_n}-\abs{\lambda}\leqslant\abs{\lambda_n-\lambda}\leqslant\epsilon\text{\ \ \ \ \ \ \ d'où : \ \ \ \ \ \ \ }\abs{\lambda_n}\leqslant\abs{\lambda}+\epsilon$$
+    Ainsi : $$\displaystyle\sum_{n\leqslant k<+\infty} \abs{u_k}=\displaystyle\sum_{n\leqslant k<+\infty} \abs{\lambda_k}\abs{v_k}\leqslant(\abs{\lambda}+\epsilon)\displaystyle\sum_{n\leqslant k<+\infty} \abs{v_k}\leqslant(\abs{\lambda}+\epsilon)\epsilon'=\epsilon$$
+    La série $\displaystyle\sum \abs{u_n}$ vérifie donc aussi le critère de Cauchy donc converge aussi.
 \end{proof}
 \end{document}
